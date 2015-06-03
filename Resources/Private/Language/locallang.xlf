@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-22T10:26:51Z" product-name="jh_ter_announcer">
+		<header/>
+		<body>
+			<trans-unit id="tx_jhterannouncer_domain_model_log">
+				<source>Log</source>
+			</trans-unit>
+			<trans-unit id="tx_jhterannouncer_domain_model_log.ext_key">
+				<source>Ext Key</source>
+			</trans-unit>
+			<trans-unit id="tx_jhterannouncer_domain_model_log.ext_version">
+				<source>Ext Version</source>
+			</trans-unit>
+			<trans-unit id="tx_jhterannouncer_domain_model_log.sent_announcement">
+				<source>Sent Announcement</source>
+			</trans-unit>
+
+
+			<trans-unit id="label.task_terAnnouncer.blacklist">
+				<source>Blacklist</source>
+			</trans-unit>
+			<trans-unit id="label.task_terAnnouncer.email">
+				<source>E-mail</source>
+			</trans-unit>
+			<trans-unit id="label.task_terAnnouncer.templateRootPath">
+				<source>templateRootPath</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

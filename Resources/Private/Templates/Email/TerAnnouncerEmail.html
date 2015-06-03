@@ -1,0 +1,9 @@
+Hello,
+
+there <f:if condition="{f:count(subject: extlist)} == 1"><f:then>is</f:then><f:else>are</f:else></f:if> <f:count subject="{extlist}" /> new extension-update<f:if condition="{f:count(subject: extlist)} > 1">s</f:if> available:
+<f:for each="{extlist}" as="info" key="extKey">
+	{extKey}
+		installed {info.installedVersion} -> available {info.terVersion}</f:for>
+
+Yours,
+jh_ter_announcer
