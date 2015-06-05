@@ -167,9 +167,9 @@ class TerAnnouncerTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask {
 				'installed' => TRUE,
 				'siteRelPath' => $properties['siteRelPath']
 			);
-			$emConf = \TYPO3\CMS\Extensionmanager\Utility\EmConfUtility::includeEmConf($extensions[$extKey]);
+			$emConf = $this->includeEmConf($extensions[$extKey]);
 			$extensions[$extKey]['version'] = $emConf['version'];
-			//remove extension from list if no version is available (occures if the admin deletes the extension folder manaually)
+			//remove extension from list if no version is available (occures if admin deletes the extension folder manually)
 			if (empty($extensions[$extKey]['version'])) unset($extensions[$extKey]);
 		}
 		return $extensions;
@@ -206,6 +206,25 @@ class TerAnnouncerTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask {
 		}
 		return $extensionList;
 		*/
+	}
+
+	/**
+	 * includeEmConf (copied from \TYPO3\CMS\Extensionmanager\Utility\EmConfUtility)
+	 *
+	 * @param array $extensions
+	 * @return mixed
+	 */
+	private function includeEmConf(array $extension) {
+		$_EXTKEY = $extension['key'];
+		$path = PATH_site . $extension['siteRelPath'] . 'ext_emconf.php';
+		$EM_CONF = NULL;
+		if (file_exists($path)) {
+			include $path;
+			if (is_array($EM_CONF[$_EXTKEY])) {
+				return $EM_CONF[$_EXTKEY];
+			}
+		}
+		return FALSE;
 	}
 
 	/**
