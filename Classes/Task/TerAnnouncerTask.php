@@ -1,10 +1,13 @@
 <?php
 namespace Heilmann\JhTerAnnouncer\Task;
 
+use \TYPO3\CMs\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Utility\VersionNumberUtility;
+
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Jonathan Heilmann <mail@jonathan-heilmann.de>
+ *  (c) 2014-2015 Jonathan Heilmann <mail@jonathan-heilmann.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,9 +27,6 @@ namespace Heilmann\JhTerAnnouncer\Task;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\CMs\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Core\Utility\VersionNumberUtility;
-
 /**
  * Send an announcement if a new extension version is available.
  *
@@ -38,12 +38,12 @@ use \TYPO3\CMS\Core\Utility\VersionNumberUtility;
 class TerAnnouncerTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask {
 
 	/**
-	 * @var object
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 	 */
 	public $objectManager = NULL;
 
 	/**
-	 * @var object
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
 	 */
 	protected $configurationManager = NULL;
 
@@ -69,10 +69,10 @@ class TerAnnouncerTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask {
 	 * @return boolean TRUE if task run was successful
 	 */
 	public function execute() {
-		$this->objectManager = GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');
-		$this->configurationManager = $this->objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManager');
-		$logRepository = $this->objectManager->get('\Heilmann\JhTerAnnouncer\Domain\Repository\LogRepository');
-		$persistenceManager = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface');
+		$this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->configurationManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+		$logRepository = $this->objectManager->get('Heilmann\\JhTerAnnouncer\\Domain\\Repository\\LogRepository');
+		$persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\PersistenceManagerInterface');
 		$this->extensionsXmlFile = GeneralUtility::getFileAbsFileName($this->extensionsXmlFolderPath . $this->extensionsXmlFileName);
 
 		// get a list of local and global installed extensions
@@ -115,7 +115,7 @@ class TerAnnouncerTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask {
 						);
 						if (count($log) == 0) {
 							// create new log-entry
-							$newLog = $this->objectManager->get('Heilmann\JhTerAnnouncer\Domain\Model\Log');
+							$newLog = $this->objectManager->get('Heilmann\\JhTerAnnouncer\\Domain\\Model\\Log');
 							$newLog->setExtKey($extKey);
 							$newLog->setExtVersion($terVersion);
 							$newLog->setPid('1');
