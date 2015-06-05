@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-21T21:54:00Z" product-name="jh_ter_announcer">
+		<header/>
+		<body>
+			<trans-unit id="ext_key.description">
+				<source>Extension key</source>
+			</trans-unit>
+			<trans-unit id="ext_title.description">
+				<source>Extension title</source>
+			</trans-unit>
+			<trans-unit id="ext_description.description">
+				<source>extDescription</source>
+			</trans-unit>
+			<trans-unit id="ext_version.description">
+				<source>Extension version number</source>
+			</trans-unit>
+			<trans-unit id="ext_state.description">
+				<source>Extension state</source>
+			</trans-unit>
+			<trans-unit id="ext_author.description">
+				<source>Extension author</source>
+			</trans-unit>
+			<trans-unit id="ext_author_email.description">
+				<source>Extension author email</source>
+			</trans-unit>
+			<trans-unit id="ext_author_company.description">
+				<source>Extension author company</source>
+			</trans-unit>
+			<trans-unit id="ext_depends.description">
+				<source>Serialized dependencies</source>
+			</trans-unit>
+			<trans-unit id="ext_conflicts.description">
+				<source>Serialized conflicts</source>
+			</trans-unit>
+			<trans-unit id="ext_suggests.description">
+				<source>Serialized suggestions</source>
+			</trans-unit>
+			<trans-unit id="ext_last_upload_comment.description">
+				<source>extLastUploadComment</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
