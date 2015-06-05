@@ -1,7 +1,6 @@
 <?php
 namespace Heilmann\JhTerAnnouncer\Domain\Model;
 
-
 /***************************************************************
  *
  *  Copyright notice

@@ -77,3 +77,4 @@ $GLOBALS['TCA']['tx_jhterannouncer_domain_model_log'] = array(
 		
 	),
 );
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

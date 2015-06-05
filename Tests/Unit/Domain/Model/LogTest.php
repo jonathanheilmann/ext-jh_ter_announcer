@@ -5,7 +5,7 @@ namespace Heilmann\JhTerAnnouncer\Tests\Unit\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 
+ *  (c) 2015 Jonathan Heilmann <mail@jonathan-heilmann.de>
  *
  *  All rights reserved
  *
@@ -32,6 +32,7 @@ namespace Heilmann\JhTerAnnouncer\Tests\Unit\Domain\Model;
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
+ * @author Jonathan Heilmann <mail@jonathan-heilmann.de>
  */
 class LogTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
