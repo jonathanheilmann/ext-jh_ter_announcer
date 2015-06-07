@@ -126,7 +126,7 @@ class TerAnnouncerTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask {
 			}
 		}
 		// save new log-entries
-		//$persistenceManager->persistAll();
+		$persistenceManager->persistAll();
 
 		if (!empty($updateableExt)) {
 			//send mail
@@ -141,7 +141,7 @@ class TerAnnouncerTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask {
 					$logRepository->update($log);
 				}
 				// save updated log-entries
-				//$persistenceManager->persistAll();
+				$persistenceManager->persistAll();
 			}
 		}
 

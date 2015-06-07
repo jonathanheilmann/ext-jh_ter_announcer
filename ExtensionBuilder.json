@@ -81,13 +81,13 @@
             "value": {
                 "actionGroup": {
                     "_default0_list": true,
-                    "_default1_show": false,
+                    "_default1_show": true,
                     "_default2_new_create": false,
                     "_default3_edit_update": false,
                     "_default4_delete": false,
                     "customActions": []
                 },
-                "name": "Feed",
+                "name": "Extension",
                 "objectsettings": {
                     "addDeletedField": true,
                     "addHiddenField": true,
@@ -95,135 +95,14 @@
                     "aggregateRoot": true,
                     "categorizable": false,
                     "description": "Record to create (rss) feed from.",
-                    "mapToTable": "",
-                    "parentClass": "",
+                    "mapToTable": "tx_extensionmanager_domain_model_extension",
+                    "parentClass": "\\TYPO3\\CMS\\Extensionmanager\\Domain\\Model\\Extension",
                     "sorting": false,
                     "type": "Entity",
                     "uid": "574110435840"
                 },
                 "propertyGroup": {
-                    "properties": [
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Extension key",
-                            "propertyIsExcludeField": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "extKey",
-                            "propertyType": "String",
-                            "uid": "429491086947"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Extension title",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extTitle",
-                            "propertyType": "String",
-                            "uid": "141819588235"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extDescription",
-                            "propertyType": "String",
-                            "uid": "1158567285209"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Extension version number",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extVersion",
-                            "propertyType": "String",
-                            "uid": "1205602339613"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Extension state",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extState",
-                            "propertyType": "String",
-                            "uid": "780411480577"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Extension author",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extAuthor",
-                            "propertyType": "String",
-                            "uid": "766488961482"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Extension author email",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extAuthorEmail",
-                            "propertyType": "String",
-                            "uid": "700077685290"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Extension author company",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extAuthorCompany",
-                            "propertyType": "String",
-                            "uid": "334896263618"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Serialized dependencies",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extDepends",
-                            "propertyType": "String",
-                            "uid": "229089077934"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Serialized conflicts",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extConflicts",
-                            "propertyType": "String",
-                            "uid": "507171601763"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Serialized suggestions",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extSuggests",
-                            "propertyType": "String",
-                            "uid": "1265481431794"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "extLastUploadComment",
-                            "propertyType": "String",
-                            "uid": "546680948234"
-                        }
-                    ]
+                    "properties": []
                 },
                 "relationGroup": {
                     "relations": []
@@ -256,12 +135,22 @@
                 "role": "Developer"
             }
         ],
-        "plugins": [],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Extension => list, show",
+                    "noncacheableActions": "",
+                    "switchableActions": ""
+                },
+                "key": "extension",
+                "name": "Extension"
+            }
+        ],
         "vendorName": "Heilmann"
     },
     "wires": [],
     "log": {
-        "last_modified": "2015-06-05 09:04",
+        "last_modified": "2015-06-07 03:27",
         "extension_builder_version": "6.2.0",
         "be_user": "Jonathan Heilmann (1)"
     }

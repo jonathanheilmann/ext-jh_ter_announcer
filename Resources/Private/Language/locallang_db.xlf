@@ -15,6 +15,12 @@
 			<trans-unit id="tx_jhterannouncer_domain_model_log.sent_announcement">
 				<source>Sent Announcement</source>
 			</trans-unit>
+			<trans-unit id="tx_jhterannouncer_domain_model_extension">
+				<source>Extension</source>
+			</trans-unit>
+			<trans-unit id="tx_extensionmanager_domain_model_extension.tx_extbase_type.Tx_JhTerAnnouncer_Extension">
+				<source>TER Announcer Extension</source>
+			</trans-unit>
 			<trans-unit id="tx_jhterannouncer_domain_model_feed">
 				<source>Feed</source>
 			</trans-unit>

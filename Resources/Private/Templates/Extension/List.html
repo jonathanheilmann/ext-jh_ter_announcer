@@ -1,0 +1,41 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Listing for Extension</h1>
+
+<f:flashMessages renderMode="div" />
+
+<table  class="tx_jhterannouncer t3-table" >
+	<tbody>
+		<f:widget.paginate objects="{extensions}" as="paginatedExtensions" configuration="{itemsPerPage: 30, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
+			<f:for each="{paginatedExtensions}" as="extension">
+				<tr>
+					<td>
+						<f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})<br/>
+						by {extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if><br/><br/>
+						<p>Description:<br/>{extension.description}</p>
+						<p>Version:<br/>{extension.version}</p>
+						<p>State:<br/>{extension.state}</p>
+						<p>Updated:<br/>{extension.lastUpdated->f:format.date(format:'m.d.y H:i')}
+						<p>Update comment:<br/>{extension.updateComment}</p>
+					<td>
+				</tr>
+			</f:for>
+		</f:widget.paginate>
+	</tbody>
+</table>
+
+<f:link.action action="new">New Extension</f:link.action>
+</f:section>

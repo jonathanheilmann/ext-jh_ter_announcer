@@ -2,10 +2,18 @@
 if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
-// Add TER Announcer task
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Heilmann\\JhTerAnnouncer\\Task\\TerAnnouncerTask'] = array(
-	'extension' => $_EXTKEY,
-	'title' => 'TER Announcer',
-	'description' => 'Announces new ext-versions',
-	'additionalFields' => '\\Heilmann\\JhTerAnnouncer\\Task\\TerAnnouncerAdditionalFieldProvider'
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Heilmann.' . $_EXTKEY,
+	'Extension',
+	array(
+		'Extension' => 'list, show',
+		
+	),
+	// non-cacheable actions
+	array(
+		'Extension' => '',
+		
+	)
 );
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

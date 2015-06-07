@@ -46,11 +46,11 @@ overwriteSettings:
 
   Configuration:
     TCA: merge
-    #TypoScript: keep
+    TypoScript: merge
 
   Resources:
     Private:
-      #Language: merge
+      Language: merge
       Templates:
       	Email:
       		TerAnnouncerEmail.html: keep
@@ -62,6 +62,8 @@ overwriteSettings:
   ext_tables.php: merge
 
   ext_tables.sql: merge
+
+  ext_typoscript_setup.txt: merge
 
 ## use static date attribute in xliff files ##
 staticDateInXliffFiles: 2014-07-21T21:54:00Z

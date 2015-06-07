@@ -1,0 +1,93 @@
+
+plugin.tx_jhterannouncer {
+	view {
+		templateRootPath = {$plugin.tx_jhterannouncer.view.templateRootPath}
+		partialRootPath = {$plugin.tx_jhterannouncer.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_jhterannouncer.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_jhterannouncer.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-jh-ter-announcer table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-jh-ter-announcer table th {
+		font-weight:bold;
+	}
+
+	.tx-jh-ter-announcer table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+terFeed = PAGE
+terFeed {
+	typeNum = {$plugin.tx_jhterannouncer.persistence.typeNum}
+	10 < plugin.tx_jhterannouncer_extension
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		additionalHeaders = Content-type: text/plain
+		no_cache = 1
+  }
+  10 = USER
+  10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = JhTerAnnouncer
+		pluginName = Extension
+		vendorName = Heilmann
+		controller = Extension
+		view < plugin.tx_jhterannouncer.view
+		persistence < plugin.tx_jhterannouncer.persistence
+		settings < plugin.tx_jhterannouncer.settings
+		settings.format = xml
+  }
+}
+
+plugin.tx_jhterannouncer.settings {
+	defaultFilter =
+	list {
+		rss {
+			channel {
+				title = Extension feed
+				link	= http://example.com
+				description = Feed of extensions
+				language = en-gb
+				copyright =
+				category =
+				generator = EXT:jh_ter_announcer
+			}
+		}
+	}
+}

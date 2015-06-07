@@ -1,6 +1,5 @@
 <?php
-namespace Heilmann\JhTerAnnouncer\Controller;
-
+namespace Heilmann\JhTerAnnouncer\Domain\Model;
 
 /***************************************************************
  *
@@ -28,26 +27,9 @@ namespace Heilmann\JhTerAnnouncer\Controller;
  ***************************************************************/
 
 /**
- * FeedController
+ * Record to create (rss) feed from.
  */
-class FeedController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class Extension extends \TYPO3\CMS\Extensionmanager\Domain\Model\Extension {
 
-	/**
-	 * feedRepository
-	 *
-	 * @var \Heilmann\JhTerAnnouncer\Domain\Repository\FeedRepository
-	 * @inject
-	 */
-	protected $feedRepository = NULL;
-
-	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$feeds = $this->feedRepository->findAll();
-		$this->view->assign('feeds', $feeds);
-	}
-
+	
 }

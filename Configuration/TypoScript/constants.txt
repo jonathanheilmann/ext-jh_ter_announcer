@@ -1,0 +1,26 @@
+
+plugin.tx_jhterannouncer {
+	view {
+		# cat=plugin.tx_jhterannouncer/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:jh_ter_announcer/Resources/Private/Templates/
+		# cat=plugin.tx_jhterannouncer/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:jh_ter_announcer/Resources/Private/Partials/
+		# cat=plugin.tx_jhterannouncer/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:jh_ter_announcer/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_jhterannouncer//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+plugin.tx_jhterannouncer {
+	persistence {
+		# cat=plugin.tx_jhterannouncer//a; type=string; label=Default storage PID
+		storagePid = 0
+		# cat=plugin.tx_jhterannouncer//a; type=int; label=typeNum for rss feed
+		typeNum = 1433680748
+	}
+}
