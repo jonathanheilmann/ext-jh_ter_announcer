@@ -1,22 +1,23 @@
 
 <f:layout name="Default" />
 
-This Template is responsible for displaying a single view for a domain object
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Show.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="main">
-<h1>Single View for Extension</h1>
 
 <f:flashMessages renderMode="div" />
-<f:render partial="Extension/Properties" arguments="{extension:extension}" />
+
+<div id="extension-uid{extension.uid}" class="single-extension">
+	<div class="header">
+		<h2 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h2>
+		<span class="author">by {extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+	</div>
+	<div class="information">
+		<p class="description"><b>Description:</b><br/>{extension.description}</p>
+		<p class="version"><b>Version:</b><br/>{extension.version} ({extension.state})</p>
+		<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
+		<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment}</p>
+		<p class="history"><f:link.action action="history" arguments="{filter: 'extensionKey:{extension.extensionKey}'}">Show extension history</f:link.action></p>
+	</div>
+</div>
+
 <f:link.action action="list">Back to list</f:link.action><br />
-<f:link.action action="new">New Extension</f:link.action>
 </f:section>

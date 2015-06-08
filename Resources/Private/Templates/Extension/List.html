@@ -17,25 +17,22 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:flashMessages renderMode="div" />
 
-<table  class="tx_jhterannouncer t3-table" >
-	<tbody>
-		<f:widget.paginate objects="{extensions}" as="paginatedExtensions" configuration="{itemsPerPage: 30, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
-			<f:for each="{paginatedExtensions}" as="extension">
-				<tr>
-					<td>
-						<f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})<br/>
-						by {extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if><br/><br/>
-						<p>Description:<br/>{extension.description}</p>
-						<p>Version:<br/>{extension.version}</p>
-						<p>State:<br/>{extension.state}</p>
-						<p>Updated:<br/>{extension.lastUpdated->f:format.date(format:'m.d.y H:i')}
-						<p>Update comment:<br/>{extension.updateComment}</p>
-					<td>
-				</tr>
-			</f:for>
-		</f:widget.paginate>
-	</tbody>
-</table>
+<div id="extension-uid{extension.uid}" class="single-extension">
+	<f:widget.paginate objects="{extensions}" as="paginatedExtensions" configuration="{itemsPerPage: 30, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
+		<f:for each="{paginatedExtensions}" as="extension">
+			<div class="header">
+				<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
+				<span class="author">by {extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+			</div>
+			<div class="information">
+				<p class="description"><b>Description:</b><br/>{extension.description}</p>
+				<p class="version"><b>Version:</b><br/>{extension.version} ({extension.state})</p>
+				<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
+				<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment}</p>
+			</div>
+		</f:for>
+	</f:widget.paginate>
+</div>
 
 <f:link.action action="new">New Extension</f:link.action>
 </f:section>

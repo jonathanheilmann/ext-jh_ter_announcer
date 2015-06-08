@@ -54,6 +54,9 @@ overwriteSettings:
       Templates:
       	Email:
       		TerAnnouncerEmail.html: keep
+      	Extension: 
+      		List.html: keep
+      		Show.html: keep
 
   ext_icon.gif: keep
 
