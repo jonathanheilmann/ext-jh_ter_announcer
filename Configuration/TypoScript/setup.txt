@@ -52,7 +52,7 @@ plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
 
 terFeed = PAGE
 terFeed {
-	typeNum = {$plugin.tx_jhterannouncer.persistence.typeNum}
+	typeNum = {$plugin.tx_jhterannouncer.settings.typeNum}
 	10 < plugin.tx_jhterannouncer_extension
 	config {
 		disableAllHeaderCode = 1
@@ -77,6 +77,7 @@ terFeed {
 
 plugin.tx_jhterannouncer.settings {
 	defaultFilter =
+	format = html
 	list {
 		rss {
 			channel {
@@ -87,6 +88,9 @@ plugin.tx_jhterannouncer.settings {
 				copyright =
 				category =
 				generator = EXT:jh_ter_announcer
+			}
+			config {
+				link.id = {$plugin.tx_jhterannouncer.settings.list.rss.config.link.id}
 			}
 		}
 	}

@@ -20,7 +20,11 @@ plugin.tx_jhterannouncer {
 	persistence {
 		# cat=plugin.tx_jhterannouncer//a; type=string; label=Default storage PID
 		storagePid = 0
+	}
+	settings {
 		# cat=plugin.tx_jhterannouncer//a; type=int; label=typeNum for rss feed
 		typeNum = 1433680748
+		# cat=plugin.tx_jhterannouncer//a; type=int; label=target page with show action for link in rss feed
+		list.rss.config.link.id = 
 	}
 }

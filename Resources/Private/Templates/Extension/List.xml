@@ -1,36 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
 {namespace h = Heilmann\JhTerAnnouncer\ViewHelpers}
-<?xml version="1.0" encoding="utf-8"?>
 
-<rss version="2.0">
-	<channel>
-		<title>{settings.list.rss.channel.title}</title>
-		<link>{settings.list.rss.channel.link}</link>
-		<description>{settings.list.rss.channel.description}</description>
-		<language>{settings.list.rss.channel.language}</language>
-		<f:if condition="{settings.list.rss.channel.copyright}">
-			<copyright>{settings.list.rss.channel.copyright}</copyright>
-		</f:if>
-		<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" /></pubDate>
-		<lastBuildDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" /></lastBuildDate>
-		<f:if condition="{settings.list.rss.channel.category}">
-			<category>{settings.list.rss.channel.category}</category>
-		</f:if>
-		<generator>{settings.list.rss.channel.generator}</generator>
+<f:alias map="{pageUid: '{f:if(condition: settings.list.rss.config.link.id, then: settings.list.rss.config.link.id, else: pageId)}'}">
+
+	<rss version="2.0">
+		<channel>
+			<title>{settings.list.rss.channel.title}</title>
+			<link>{settings.list.rss.channel.link}</link>
+			<description>{settings.list.rss.channel.description}</description>
+			<language>{settings.list.rss.channel.language}</language>
+			<f:if condition="{settings.list.rss.channel.copyright}">
+				<copyright>{settings.list.rss.channel.copyright}</copyright>
+			</f:if>
+			<pubDate>
+				<h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" />
+			</pubDate>
+			<lastBuildDate>
+				<h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" />
+			</lastBuildDate>
+			<f:if condition="{settings.list.rss.channel.category}">
+				<category>{settings.list.rss.channel.category}</category>
+			</f:if>
+			<generator>{settings.list.rss.channel.generator}</generator>
 			<f:if condition="{extensions}">
 				<f:for each="{extensions}" as="extension">
 					<item>
 						<guid>extension-{extension.uid}</guid>
 						<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
 						<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
-						<link></link>
+						<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})}</link>
 						<description>
-                      <h:format.trim trimTabs="FALSE">
-                          <h:format.striptags>New version: {extension.version} {extension.state}</h:format.striptags>
-                          <f:format.htmlspecialchars><h:format.striptags>{extension.updateComment}</h:format.striptags></f:format.htmlspecialchars>
-                      </h:format.trim>
-                  </description>
+							<h:format.trim trimTabs="FALSE">
+								<f:format.cdata>
+									<h:format.striptags>New version {extension.version} ({extension.state})</h:format.striptags><br/>
+									Update comment:<br/>
+									<f:format.htmlspecialchars>
+										<h:format.striptags>{extension.updateComment}</h:format.striptags>
+									</f:format.htmlspecialchars>
+								</f:format.cdata>
+							</h:format.trim>
+						</description>
 					</item>
 				</f:for>
 			</f:if>
-	</channel>
-</rss>
+		</channel>
+	</rss>
+</f:alias>
