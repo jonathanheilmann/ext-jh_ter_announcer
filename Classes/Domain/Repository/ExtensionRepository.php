@@ -77,4 +77,5 @@ class ExtensionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$query->matching($constraints);
 		return $query->execute();
 	}
+
 }

@@ -12,12 +12,14 @@
 	</div>
 	<div class="information">
 		<p class="description"><b>Description:</b><br/>{extension.description}</p>
-		<p class="version"><b>Version:</b><br/>{extension.version} ({extension.state})</p>
-		<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
-		<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment}</p>
-		<p class="history"><f:link.action action="history" arguments="{extension: extension}">Extension history</f:link.action></p>
 	</div>
+	<f:for each="{versions}" as="version">
+		<div class="history {f:if(condition:'{0: extension} == {0: version}', then: 'selected')}">
+			<p class="version"><b>Version:</b><br/>{version.version} ({version.state})</p>
+			<p class="date"><b>Date:</b><br/><f:format.date date="{version.lastUpdated}" format="d.m.Y H:i"/></p>
+			<p class="update-comment"><b>Update comment:</b><br/>{version.updateComment}</p>
+		</div>
+	</f:for>
 </div>
-
-<f:link.action action="list">Back to list</f:link.action><br />
+<f:link.action action="show" arguments="{extension: extension}">Back to extension</f:link.action>
 </f:section>

@@ -41,8 +41,6 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	protected $extensionRepository = NULL;
 
 	/**
-	 *
-	 *
 	 * @var string
 	 */
 	protected $propertyNameWhitelist = 'extensionKey,state,category,authorName,authorEmail,ownerusername,authorCompany,currentVersion';
@@ -52,17 +50,17 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 *
 	 * @param string $filtersString
 	 * @param string $format
-	 * @param Heilmann\JhTerAnnouncer\Domain\Model\Extension
 	 * @return void
 	 */
 	public function listAction($filter = '', $format = '') {
 		$filtersString = $filter;
 		if ($format != '') {
 			$this->request->setFormat($format);
-		} else if ($this->settings['format'] != '') {
-			$this->request->setFormat($this->settings['format']);
+		} else {
+			if ($this->settings['format'] != '') {
+				$this->request->setFormat($this->settings['format']);
+			}
 		}
-
 		$extensions = NULL;
 		if ($filtersString == '') {
 			$filtersString = $this->settings['defaultFilter'];
@@ -90,6 +88,7 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 			$extensions = $this->extensionRepository->findByCurrentVersion(1);
 		}
 		$this->view->assign('extensions', $extensions);
+		$this->view->assign('pageId', $GLOBALS['TSFE']->id);
 	}
 
 	/**
@@ -99,6 +98,18 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 * @return void
 	 */
 	public function showAction(\Heilmann\JhTerAnnouncer\Domain\Model\Extension $extension) {
+		$this->view->assign('extension', $extension);
+	}
+
+	/**
+	 * action history
+	 *
+	 * @param \Heilmann\JhTerAnnouncer\Domain\Model\Extension $extension
+	 * @return void
+	 */
+	public function historyAction(\Heilmann\JhTerAnnouncer\Domain\Model\Extension $extension) {
+		$versions = $this->extensionRepository->findByExtensionKey($extension->getExtensionKey());
+		$this->view->assign('versions', $versions);
 		$this->view->assign('extension', $extension);
 	}
 

@@ -7,13 +7,13 @@ if (!defined('TYPO3_MODE')) {
 	'Heilmann.' . $_EXTKEY,
 	'Extension',
 	array(
-		'Extension' => 'list, show',
-
+		'Extension' => 'list, show, history',
+		
 	),
 	// non-cacheable actions
 	array(
 		'Extension' => '',
-
+		
 	)
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

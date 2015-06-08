@@ -85,7 +85,9 @@
                     "_default2_new_create": false,
                     "_default3_edit_update": false,
                     "_default4_delete": false,
-                    "customActions": []
+                    "customActions": [
+                        "history"
+                    ]
                 },
                 "name": "Extension",
                 "objectsettings": {
@@ -138,7 +140,7 @@
         "plugins": [
             {
                 "actions": {
-                    "controllerActionCombinations": "Extension => list, show",
+                    "controllerActionCombinations": "Extension => list, show, history",
                     "noncacheableActions": "",
                     "switchableActions": ""
                 },
@@ -150,7 +152,7 @@
     },
     "wires": [],
     "log": {
-        "last_modified": "2015-06-07 03:27",
+        "last_modified": "2015-06-08 04:58",
         "extension_builder_version": "6.2.0",
         "be_user": "Jonathan Heilmann (1)"
     }
