@@ -65,6 +65,10 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 		if ($filtersString == '') {
 			$filtersString = $this->settings['defaultFilter'];
 		}
+		$limit = NULL;
+		if ($this->request->getFormat() == 'xml') {
+			$limit = $this->settings['list']['rss']['config']['limit'];
+		}
 		if ($filtersString != '') {
 			$demand = array();
 			$filtersArray = GeneralUtility::trimExplode(';', $filtersString, TRUE);
@@ -78,13 +82,13 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 						);
 					}
 				}
-				$extensions = $this->extensionRepository->findByDemand($demand);
+				$extensions = $this->extensionRepository->findByDemand($demand, $limit);
 			} else {
 				$this->addFlashMessage('Faulty filter!');
-				$extensions = $this->extensionRepository->findByCurrentVersion(1);
+				$extensions = $this->extensionRepository->findByCurrentVersion(1, $limit);
 			}
 		} else {
-			$extensions = $this->extensionRepository->findByCurrentVersion(1);
+			$extensions = $this->extensionRepository->findByCurrentVersion(1, $limit);
 		}
 		$this->view->assign('extensions', $extensions);
 		$this->view->assign('pageId', $GLOBALS['TSFE']->id);

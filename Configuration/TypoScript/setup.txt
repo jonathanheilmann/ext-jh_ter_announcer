@@ -91,6 +91,7 @@ plugin.tx_jhterannouncer.settings {
 			}
 			config {
 				link.id = {$plugin.tx_jhterannouncer.settings.list.rss.config.link.id}
+				limit = {$plugin.tx_jhterannouncer.settings.list.rss.config.limit}
 			}
 		}
 	}

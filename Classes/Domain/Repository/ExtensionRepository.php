@@ -45,9 +45,10 @@ class ExtensionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * find rows by demand
 	 *
 	 * @param array $demand
+	 * @param int $limit
 	 * @return
 	 */
-	public function findByDemand($demand) {
+	public function findByDemand($demand, $limit = NULL) {
 		$query = $this->createQuery();
 		if (count($demand) == 0) {
 			return $query->execute();
@@ -74,8 +75,27 @@ class ExtensionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			default:
 				$constraints = $query->logicalAnd($constraints);
 		}
+		if ($limit !== NULL && (int)$limit >= 1) {
+			$query->setLimit((int)$limit);
+		}
 		$query->matching($constraints);
 		return $query->execute();
 	}
-
+	
+	/**
+	 * find by currentVersion
+	 * 
+	 * @param boolean $currentVersion
+	 * @param int $limit
+	 * @return 
+	 */
+	public function findByCurrentVersion($currentVersion, $limit = NULL) {
+		$query = $this->createQuery();
+		if ($limit !== NULL && (int)$limit >= 1) {
+			$query->setLimit((int)$limit);
+		}
+		$query->matching('currentVersion', $currentVersion);
+		return $query->execute();
+	}
+	
 }

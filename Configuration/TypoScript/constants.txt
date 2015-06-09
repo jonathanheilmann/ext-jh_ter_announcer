@@ -26,5 +26,7 @@ plugin.tx_jhterannouncer {
 		typeNum = 1433680748
 		# cat=plugin.tx_jhterannouncer//a; type=int; label=target page with show action for link in rss feed
 		list.rss.config.link.id = 
+		# cat=plugin.tx_jhterannouncer//a; type=int; label=limit of items in rss feed
+		list.rss.config.limit = 10
 	}
 }
