@@ -95,3 +95,50 @@ plugin.tx_jhterannouncer.settings {
 		}
 	}
 }
+
+plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE >
+plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
+	.tx-jh-ter-announcer .list-extension .single {
+		padding: 10px;
+	}
+	.tx-jh-ter-announcer .list-extension .single:nth-child(odd) {
+		background-color: #f7f7f7;
+	}
+	.tx-jh-ter-announcer .list-extension .single:nth-child(even) {
+		background-color: #fdfdfd;
+	}
+	.tx-jh-ter-announcer .list-extension .single:hover {
+		background-color: #efefef;
+	}
+	
+	.tx-jh-ter-announcer .show-extension {
+		padding: 10px;
+		background-color: #f7f7f7;
+	}
+	.tx-jh-ter-announcer .show-extension .information .version,
+	.tx-jh-ter-announcer .show-extension .information .last-updated {
+		display: inline-block;
+		width: 50%;
+		float: left;
+	}
+	.tx-jh-ter-announcer .show-extension .history {
+		padding: 10px;
+		clear: both;
+	}
+	.tx-jh-ter-announcer .show-extension .history:nth-child(odd) {
+		background-color: #f7f7f7;
+	}
+	.tx-jh-ter-announcer .show-extension .history:nth-child(even) {
+		background-color: #fdfdfd;
+	}
+	.tx-jh-ter-announcer .show-extension > .history.selected,
+	.tx-jh-ter-announcer .show-extension > .history:hover {
+		background-color: #efefef;
+	}
+	.tx-jh-ter-announcer .history .version,
+	.tx-jh-ter-announcer .history .date {
+		display: inline-block;
+		width: 50%;
+		float: left;
+	}
+)

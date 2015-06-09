@@ -32,7 +32,7 @@
 						<description>
 							<h:format.trim trimTabs="FALSE">
 								<f:format.cdata>
-									<h:format.striptags>New version {extension.version} ({extension.state})</h:format.striptags><br/>
+									<h:format.striptags>New version {extension.version} (<h:extension.resolveStateFromIntToString state="{extension.state}" />)</h:format.striptags><br/>
 									Update comment:<br/>
 									<f:format.htmlspecialchars>
 										<h:format.striptags>{extension.updateComment}</h:format.striptags>

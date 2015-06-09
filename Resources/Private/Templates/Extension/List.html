@@ -1,19 +1,8 @@
+{namespace h = Heilmann\JhTerAnnouncer\ViewHelpers}
 
 <f:layout name="Default" />
 
-This Template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="main">
-<h1>Listing for Extension</h1>
 
 <f:flashMessages renderMode="div" />
 
@@ -23,13 +12,15 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<div class="single">
 				<div class="header">
 					<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
-					<span class="author">by {extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+					<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
 				</div>
 				<div class="information">
-					<p class="description"><b>Description:</b><br/>{extension.description}</p>
-					<p class="version"><b>Version:</b><br/>{extension.version} ({extension.state})</p>
-					<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
-					<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment}</p>
+					<f:if condition="{extension.description}"><p class="description"><b>Description:</b><br/>{extension.description->f:format.htmlentities()}</p></f:if>
+					<div class="history">
+						<p class="version"><b>Version:</b><br/>{extension.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
+						<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
+						<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment->f:format.htmlentities()}</p>
+					</div>
 				</div>
 			</div>
 		</f:for>
