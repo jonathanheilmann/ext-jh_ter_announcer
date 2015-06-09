@@ -53,16 +53,17 @@ plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
 terFeed = PAGE
 terFeed {
 	typeNum = {$plugin.tx_jhterannouncer.settings.typeNum}
-	10 < plugin.tx_jhterannouncer_extension
 	config {
 		disableAllHeaderCode = 1
 		xhtml_cleaning = 0
 		admPanel = 0
-		additionalHeaders = Content-type: text/plain
+		additionalHeaders = Content-type: application/rss+xml
 		no_cache = 1
-  }
-  10 = USER
-  10 {
+		language = en
+		locale_all = en_US.UTF8
+	}
+	10 = USER
+	10 {
 		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
 		extensionName = JhTerAnnouncer
 		pluginName = Extension
@@ -72,7 +73,7 @@ terFeed {
 		persistence < plugin.tx_jhterannouncer.persistence
 		settings < plugin.tx_jhterannouncer.settings
 		settings.format = xml
-  }
+	}
 }
 
 plugin.tx_jhterannouncer.settings {
@@ -82,7 +83,7 @@ plugin.tx_jhterannouncer.settings {
 		rss {
 			channel {
 				title = Extension feed
-				link	= http://example.com
+				link = http://example.com
 				description = Feed of extensions
 				language = en-gb
 				copyright =
