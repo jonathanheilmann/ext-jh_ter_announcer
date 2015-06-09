@@ -7,25 +7,51 @@
 <f:flashMessages renderMode="div" />
 
 <div id="extension-uid{extension.uid}" class="list-extension">
-	<f:widget.paginate objects="{extensions}" as="paginatedExtensions" configuration="{itemsPerPage: 30, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
-		<f:for each="{paginatedExtensions}" as="extension">
-			<div class="single">
-				<div class="header">
-					<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
-					<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
-				</div>
-				<div class="information">
-					<f:if condition="{extension.description}"><p class="description"><b>Description:</b><br/>{extension.description->f:format.htmlentities()}</p></f:if>
-					<div class="history">
-						<p class="version"><b>Version:</b><br/>{extension.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
-						<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
-						<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment->f:format.htmlentities()}</p>
+	<f:if condition="{settings.list.frontend.paginateList}">
+		<f:then>
+			<f:widget.paginate objects="{extensions}" as="paginatedExtensions" configuration="{
+				itemsPerPage: settings.list.frontend.paginate.itemsPerPage, 
+				insertAbove: settings.list.frontend.paginate.insertAbove, 
+				insertBelow: settings.list.frontend.paginate.insertBelow, 
+				maximumNumberOfLinks: settings.list.frontend.paginate.maximumNumberOfLinks
+			}">
+				<f:for each="{paginatedExtensions}" as="extension">
+					<div class="single">
+						<div class="header">
+							<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
+							<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+						</div>
+						<div class="information">
+							<f:if condition="{extension.description}"><p class="description"><b>Description:</b><br/>{extension.description->f:format.htmlentities()}</p></f:if>
+							<div class="history">
+								<p class="version"><b>Version:</b><br/>{extension.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
+								<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
+								<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment->f:format.htmlentities()}</p>
+							</div>
+						</div>
+					</div>
+				</f:for>
+			</f:widget.paginate>
+		</f:then>
+		<f:else>
+			<f:for each="{extension}" as="extension">
+				<div class="single">
+					<div class="header">
+						<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
+						<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+					</div>
+					<div class="information">
+						<f:if condition="{extension.description}"><p class="description"><b>Description:</b><br/>{extension.description->f:format.htmlentities()}</p></f:if>
+						<div class="history">
+							<p class="version"><b>Version:</b><br/>{extension.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
+							<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
+							<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment->f:format.htmlentities()}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		</f:for>
-	</f:widget.paginate>
+			</f:for>
+	</f:else>
+	</f:if>
 </div>
 
-<f:link.action action="new">New Extension</f:link.action>
 </f:section>

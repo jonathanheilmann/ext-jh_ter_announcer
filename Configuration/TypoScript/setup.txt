@@ -95,6 +95,15 @@ plugin.tx_jhterannouncer.settings {
 				limit = {$plugin.tx_jhterannouncer.settings.list.rss.config.limit}
 			}
 		}
+		frontend {
+			paginateList = 1
+			paginate {
+				itemsPerPage = 15
+				insertAbove = 0
+				insertBelow = 1
+				maximumNumberOfLinks = 10
+			}
+		}
 	}
 }
 
@@ -155,4 +164,20 @@ plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
 	.tx-jh-ter-announcer .version > .stable {
 		color: #3db900;
 	}
+	
+	.tx-jh-ter-announcer ul.f3-widget-paginator {
+		padding: 0;
+	}
+	.tx-jh-ter-announcer .f3-widget-paginator {
+        display: inline-block;
+        margin: 20px 0px;
+        text-align: center;
+        width: 100%;
+    }
+    .tx-jh-ter-announcer .f3-widget-paginator > li {
+        display: inline;
+    }
+    .tx-jh-ter-announcer .f3-widget-paginator > li > a {
+        padding: 12px;
+    }
 )
