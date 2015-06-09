@@ -78,7 +78,6 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 						);
 					}
 				}
-				//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($demand);
 				$extensions = $this->extensionRepository->findByDemand($demand);
 			} else {
 				$this->addFlashMessage('Faulty filter!');
