@@ -141,4 +141,16 @@ plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
 		width: 50%;
 		float: left;
 	}
+	.tx-jh-ter-announcer .version > * {
+		text-transform: capitalize;
+	}
+	.tx-jh-ter-announcer .version > .alpha {
+		color: #f14400;
+	}
+	.tx-jh-ter-announcer .version > .beta {
+		color: #f4bd00;
+	}
+	.tx-jh-ter-announcer .version > .stable {
+		color: #3db900;
+	}
 )
