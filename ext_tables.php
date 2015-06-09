@@ -63,3 +63,6 @@ $GLOBALS['TCA']['tx_extensionmanager_domain_model_extension']['columns'][$TCA['t
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_extensionmanager_domain_model_extension', $GLOBALS['TCA']['tx_extensionmanager_domain_model_extension']['ctrl']['type'],'','after:' . $TCA['tx_extensionmanager_domain_model_extension']['ctrl']['label']);
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+// Hide log table in web_list
+$GLOBALS['TCA']['tx_extensionmanager_domain_model_extension']['ctrl']['hideTable'] = true;
