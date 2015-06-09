@@ -25,10 +25,3 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Heilmann\\JhTer
 	'description' => 'Announces new ext-versions',
 	'additionalFields' => '\\Heilmann\\JhTerAnnouncer\\Task\\TerAnnouncerAdditionalFieldProvider'
 );
-
-// Add task to update from TER
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Heilmann\\JhTerAnnouncer\\Task\\UpdateFromTerTask'] = array(
-	'extension' => $_EXTKEY,
-	'title' => 'Update from TER',
-	'description' => 'Update extension list from TER'
-);
