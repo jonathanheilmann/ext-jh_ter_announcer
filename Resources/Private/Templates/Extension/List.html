@@ -31,18 +31,18 @@
 </f:section>
 
 <f:section name="extension">
-				<div class="single">
-					<div class="header">
-						<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
-						<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
-					</div>
-					<div class="information">
-						<f:if condition="{extension.description}"><p class="description"><b>Description:</b><br/>{extension.description->f:format.htmlentities()}</p></f:if>
-						<div class="history">
-							<p class="version"><b>Version:</b><br/>{extension.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
-							<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
-							<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment->f:format.htmlentities()}</p>
-						</div>
-					</div>
-				</div>
+	<div class="single">
+		<div class="header">
+			<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
+			<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+		</div>
+		<div class="information">
+			<f:if condition="{extension.description}"><p class="description"><b>Description:</b><br/>{extension.description->f:format.htmlentities()}</p></f:if>
+			<div class="history">
+				<p class="version"><b>Version:</b><br/>{extension.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
+				<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
+				<p class="update-comment"><b>Update comment:</b><br/>{extension.updateComment->f:format.htmlentities()}</p>
+			</div>
+		</div>
+	</div>
 </f:section>

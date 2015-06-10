@@ -28,5 +28,7 @@ plugin.tx_jhterannouncer {
 		list.rss.config.link.id = 
 		# cat=plugin.tx_jhterannouncer//a; type=int; label=limit of items in rss feed
 		list.rss.config.limit = 10
+		# cat=plugin.tx_jhterannouncer//a; type=options[linkToTer, linkToWebsite]; label=Target of rss feed: May be your website or TER
+		list.rss.config.targetType = linkToWebsite
 	}
 }
