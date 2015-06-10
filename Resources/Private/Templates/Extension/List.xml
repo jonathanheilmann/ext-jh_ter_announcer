@@ -36,13 +36,13 @@
 	<description>
 		<h:format.trim trimTabs="FALSE">
 			<f:format.cdata><f:format.htmlspecialchars>
-				<h:format.striptags>New version {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)</h:format.striptags><br/>
-				<p><b>Update comment:</b><br/>{extension.updateComment}</p>
+				<h:format.striptags><f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)</h:format.striptags><br/>
+				<p><b><f:translate key="extension.updateComment" />:</b><br/>{extension.updateComment}</p>
 				<hr/>
-				<p><b>Description:</b><br/>{extension.description}</p>
-				<p><b>Category:</b><br/><h:extension.resolveCategoryFromInt category="{extension.category}"/></p>
+				<p><b><f:translate key="extension.description" />:</b><br/>{extension.description}</p>
+				<p><b><f:translate key="extension.category" />:</b><br/><h:extension.resolveCategoryFromInt category="{extension.category}"/></p>
 				<p>
-					<b>Dependencies:</b><br/>
+					<b><f:translate key="extension.dependencies" />:</b><br/>
 					<f:for each="{h:extension.resolveDependencies(dependencies:extension.serializedDependencies)}" as="dependencies" key="key" iteration="iterator">
 						<u>{key}:</u><br/>
 						<f:for each="{dependencies.0}" as="dependency" iteration="keyIterator">
@@ -63,13 +63,11 @@
 	<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})->f:format.htmlentities()}</link>
 	<description>
 		<h:format.trim trimTabs="FALSE">
-			<f:format.cdata>
-				<h:format.striptags>New version {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)</h:format.striptags><br/>
-				Update comment:<br/>
-				<f:format.htmlspecialchars>
-					<h:format.striptags>{extension.updateComment}</h:format.striptags>
-				</f:format.htmlspecialchars>
-			</f:format.cdata>
+			<f:format.cdata><f:format.htmlspecialchars>
+				<f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)<br/>
+				<f:translate key="extension.updateComment" />:<br/>
+				{extension.updateComment}
+			</f:format.htmlspecialchars></f:format.cdata>
 		</h:format.trim>
 	</description>
 </f:section>
