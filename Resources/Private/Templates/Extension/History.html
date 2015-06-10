@@ -24,6 +24,9 @@
 				{f:if(condition: iterator.isLast, else: '<br/>')}
 			</f:for>
 		</p>
+		<p class="ter">
+			<f:link.external uri="http://typo3.org/extensions/repository/view/{extension.extensionKey}" title="View extension \"{extension.title}\" in TER" target="new">View extension in TER</f:link.external> 
+		</p>
 	</div>
 	<f:for each="{versions}" as="version">
 		<div class="history {f:if(condition:'{0: extension} == {0: version}', then: 'selected')}">

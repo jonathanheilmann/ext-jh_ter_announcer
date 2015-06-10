@@ -24,6 +24,9 @@
 				{f:if(condition: iterator.isLast, else: '<br/>')}
 			</f:for>
 		</p>
+		<p class="ter">
+			<f:link.external uri="http://typo3.org/extensions/repository/view/{extension.extensionKey}" title="View extension \"{extension.title}\" in TER" target="new">View extension in TER</f:link.external> 
+		</p>
 		<div class="history">
 			<p class="version"><b>Version:</b><br/>{extension.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
 			<p class="last-updated"><b>Last updated:</b><br/><f:format.date date="{extension.lastUpdated}" format="d.m.Y H:i"/></p>
