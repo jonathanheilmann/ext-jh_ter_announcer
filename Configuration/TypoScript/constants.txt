@@ -1,0 +1,34 @@
+
+plugin.tx_jhterannouncer {
+	view {
+		# cat=plugin.tx_jhterannouncer/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:jh_ter_announcer/Resources/Private/Templates/
+		# cat=plugin.tx_jhterannouncer/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:jh_ter_announcer/Resources/Private/Partials/
+		# cat=plugin.tx_jhterannouncer/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:jh_ter_announcer/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_jhterannouncer//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+plugin.tx_jhterannouncer {
+	persistence {
+		# cat=plugin.tx_jhterannouncer//a; type=string; label=Default storage PID
+		storagePid = 0
+	}
+	settings {
+		# cat=plugin.tx_jhterannouncer//a; type=int; label=typeNum for rss feed
+		typeNum = 1433680748
+		# cat=plugin.tx_jhterannouncer//a; type=int; label=target page with show action for link in rss feed
+		list.rss.config.link.id = 
+		# cat=plugin.tx_jhterannouncer//a; type=int; label=limit of items in rss feed
+		list.rss.config.limit = 10
+		# cat=plugin.tx_jhterannouncer//a; type=options[linkToTer, linkToWebsite]; label=Target of rss feed: May be your website or TER
+		list.rss.config.targetType = linkToWebsite
+	}
+}

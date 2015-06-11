@@ -1,0 +1,35 @@
+
+config.tx_extbase{
+    persistence{
+        classes{
+
+            TYPO3\CMS\Extensionmanager\Domain\Model\Extension {
+                subclasses {
+                    Tx_JhTerAnnouncer_Extension = Heilmann\JhTerAnnouncer\Domain\Model\Extension
+					
+          		}
+            }
+            Heilmann\JhTerAnnouncer\Domain\Model\Extension {
+                mapping {
+                    tableName = tx_extensionmanager_domain_model_extension
+                    recordType = Tx_JhTerAnnouncer_Extension
+                }
+            }
+            
+    	}
+    }
+}
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+config.tx_extbase{
+	persistence{
+		classes{
+			Heilmann\JhTerAnnouncer\Domain\Model\Extension {
+				mapping {
+					recordType >
+				}
+			}
+		}
+	}
+}

@@ -24,3 +24,14 @@ CREATE TABLE tx_jhterannouncer_domain_model_log (
  KEY language (l10n_parent,sys_language_uid)
 
 );
+
+#
+# Table structure for table 'tx_extensionmanager_domain_model_extension'
+#
+CREATE TABLE tx_extensionmanager_domain_model_extension (
+
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
+
+);
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-06-10T18:54:14Z">
+		<header>
+			<generator>LFEditor</generator>
+		</header>
+		<body>
+		<trans-unit id="extension.backToList" approved="yes">
+			<source>Back to list</source>
+			<target>Zurück zur Liste</target>
+		</trans-unit>
+		<trans-unit id="extension.category" approved="yes">
+			<source>Category</source>
+			<target>Kategorie</target>
+		</trans-unit>
+		<trans-unit id="extension.date" approved="yes">
+			<source>Date</source>
+			<target>Datum</target>
+		</trans-unit>
+		<trans-unit id="extension.dependencies" approved="yes">
+			<source>Dependencies</source>
+			<target>Abhängigkeiten</target>
+		</trans-unit>
+		<trans-unit id="extension.description" approved="yes">
+			<source>Description</source>
+			<target>Beschreibung</target>
+		</trans-unit>
+		<trans-unit id="extension.extensionHistory" approved="yes">
+			<source>Extension history</source>
+			<target>Extensio-Verlauf</target>
+		</trans-unit>
+		<trans-unit id="extension.lastUpdated" approved="yes">
+			<source>Last updated</source>
+			<target>Zuletzt aktualisiert</target>
+		</trans-unit>
+		<trans-unit id="extension.newVersion" approved="yes">
+			<source>New version</source>
+			<target>Neue Version</target>
+		</trans-unit>
+		<trans-unit id="extension.updateComment" approved="yes">
+			<source>Update comment</source>
+			<target>Update-Kommentar</target>
+		</trans-unit>
+		<trans-unit id="extension.version" approved="yes">
+			<source>Version</source>
+			<target>Version</target>
+		</trans-unit>
+		<trans-unit id="extension.viewInTer" approved="yes">
+			<source>View extension in TER</source>
+			<target>Extension in TER öffnen</target>
+		</trans-unit>
+		<trans-unit id="extension.viewInTerTitleTag" approved="yes">
+			<source>View extension &quot;%s&quot; in TER</source>
+			<target>Öffne Extension &quot;%s&quot; in TER</target>
+		</trans-unit>
+		</body>
+	</file>
+</xliff>

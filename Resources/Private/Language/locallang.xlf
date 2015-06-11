@@ -1,31 +1,109 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-22T10:26:51Z" product-name="jh_ter_announcer">
-		<header/>
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-06-10T18:54:14Z">
+		<header>
+			<generator>LFEditor</generator>
+		</header>
 		<body>
-			<trans-unit id="tx_jhterannouncer_domain_model_log">
-				<source>Log</source>
-			</trans-unit>
-			<trans-unit id="tx_jhterannouncer_domain_model_log.ext_key">
-				<source>Ext Key</source>
-			</trans-unit>
-			<trans-unit id="tx_jhterannouncer_domain_model_log.ext_version">
-				<source>Ext Version</source>
-			</trans-unit>
-			<trans-unit id="tx_jhterannouncer_domain_model_log.sent_announcement">
-				<source>Sent Announcement</source>
-			</trans-unit>
-
-
-			<trans-unit id="label.task_terAnnouncer.blacklist">
-				<source>Blacklist</source>
-			</trans-unit>
-			<trans-unit id="label.task_terAnnouncer.email">
-				<source>E-mail</source>
-			</trans-unit>
-			<trans-unit id="label.task_terAnnouncer.templateRootPath">
-				<source>templateRootPath</source>
-			</trans-unit>
+		<trans-unit id="extension.backToList">
+			<source>Back to list</source>
+		</trans-unit>
+		<trans-unit id="extension.category">
+			<source>Category</source>
+		</trans-unit>
+		<trans-unit id="extension.date">
+			<source>Date</source>
+		</trans-unit>
+		<trans-unit id="extension.dependencies">
+			<source>Dependencies</source>
+		</trans-unit>
+		<trans-unit id="extension.description">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="extension.extensionHistory">
+			<source>Extension history</source>
+		</trans-unit>
+		<trans-unit id="extension.lastUpdated">
+			<source>Last updated</source>
+		</trans-unit>
+		<trans-unit id="extension.newVersion">
+			<source>New version</source>
+		</trans-unit>
+		<trans-unit id="extension.updateComment">
+			<source>Update comment</source>
+		</trans-unit>
+		<trans-unit id="extension.version">
+			<source>Version</source>
+		</trans-unit>
+		<trans-unit id="extension.viewInTer">
+			<source>View extension in TER</source>
+		</trans-unit>
+		<trans-unit id="extension.viewInTerTitleTag">
+			<source>View extension &quot;%s&quot; in TER</source>
+		</trans-unit>
+		<trans-unit id="label.task_terAnnouncer.blacklist">
+			<source>Blacklist</source>
+		</trans-unit>
+		<trans-unit id="label.task_terAnnouncer.email">
+			<source>E-mail</source>
+		</trans-unit>
+		<trans-unit id="label.task_terAnnouncer.templateRootPath">
+			<source>templateRootPath</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_extension">
+			<source>Extension</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed">
+			<source>Feed</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_author">
+			<source>Ext Author</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_author_company">
+			<source>Ext Author Company</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_author_email">
+			<source>Ext Author Email</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_conflicts">
+			<source>Ext Conflicts</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_depends">
+			<source>Ext Depends</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_description">
+			<source>Ext Description</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_key">
+			<source>Ext Key</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_last_upload_comment">
+			<source>Ext Last Upload Comment</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_state">
+			<source>Ext State</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_suggests">
+			<source>Ext Suggests</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_title">
+			<source>Ext Title</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_feed.ext_version">
+			<source>Ext Version</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_log">
+			<source>Log</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_log.ext_key">
+			<source>Ext Key</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_log.ext_version">
+			<source>Ext Version</source>
+		</trans-unit>
+		<trans-unit id="tx_jhterannouncer_domain_model_log.sent_announcement">
+			<source>Sent Announcement</source>
+		</trans-unit>
 		</body>
 	</file>
 </xliff>

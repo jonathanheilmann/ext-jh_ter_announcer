@@ -15,9 +15,7 @@
                     "_default2_new_create": false,
                     "_default3_edit_update": false,
                     "_default4_delete": false,
-                    "customActions": [
-
-                    ]
+                    "customActions": []
                 },
                 "name": "Log",
                 "objectsettings": {
@@ -68,46 +66,94 @@
                     ]
                 },
                 "relationGroup": {
-                    "relations": [
-
+                    "relations": []
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    265,
+                    62
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+                        "history"
                     ]
+                },
+                "name": "Extension",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "Record to create (rss) feed from.",
+                    "mapToTable": "tx_extensionmanager_domain_model_extension",
+                    "parentClass": "\\TYPO3\\CMS\\Extensionmanager\\Domain\\Model\\Extension",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "574110435840"
+                },
+                "propertyGroup": {
+                    "properties": []
+                },
+                "relationGroup": {
+                    "relations": []
                 }
             }
         }
     ],
     "properties": {
-        "backendModules": [
-
-        ],
+        "backendModules": [],
         "description": "Provides a task to send you a mail if an extension-update is available.",
         "emConf": {
             "category": "services",
             "custom_category": "",
-            "dependsOn": "typo3 => 6.2\n",
+            "dependsOn": "typo3 => 6.2.0-6.2.99\n",
             "disableLocalization": false,
             "disableVersioning": true,
             "sourceLanguage": "en",
-            "state": "alpha",
+            "state": "beta",
             "targetVersion": "6.2",
-            "version": "0.0.1"
+            "version": "0.1.0-dev"
         },
         "extensionKey": "jh_ter_announcer",
         "name": "TER Announcer",
         "originalExtensionKey": "jh_ter_announcer",
         "persons": [
-
+            {
+                "company": "",
+                "email": "mail@jonathan-heilmann.de",
+                "name": "Jonathan Heilmann",
+                "role": "Developer"
+            }
         ],
         "plugins": [
-
+            {
+                "actions": {
+                    "controllerActionCombinations": "Extension => list, show, history",
+                    "noncacheableActions": "",
+                    "switchableActions": ""
+                },
+                "key": "extension",
+                "name": "Extension"
+            }
         ],
         "vendorName": "Heilmann"
     },
-    "wires": [
-
-    ],
+    "wires": [],
     "log": {
-        "last_modified": "2014-07-22 10:26",
+        "last_modified": "2015-06-08 04:58",
         "extension_builder_version": "6.2.0",
-        "be_user": " (5)"
+        "be_user": "Jonathan Heilmann (1)"
     }
 }

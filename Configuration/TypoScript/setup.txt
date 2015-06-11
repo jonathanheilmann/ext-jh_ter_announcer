@@ -1,0 +1,184 @@
+
+plugin.tx_jhterannouncer {
+	view {
+		templateRootPath = {$plugin.tx_jhterannouncer.view.templateRootPath}
+		partialRootPath = {$plugin.tx_jhterannouncer.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_jhterannouncer.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_jhterannouncer.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-jh-ter-announcer table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-jh-ter-announcer table th {
+		font-weight:bold;
+	}
+
+	.tx-jh-ter-announcer table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+terFeed = PAGE
+terFeed {
+	typeNum = {$plugin.tx_jhterannouncer.settings.typeNum}
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		additionalHeaders = Content-type: application/rss+xml
+		no_cache = 1
+		language = en
+		locale_all = en_US.UTF8
+	}
+	10 = USER
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = JhTerAnnouncer
+		pluginName = Extension
+		vendorName = Heilmann
+		controller = Extension
+		view < plugin.tx_jhterannouncer.view
+		persistence < plugin.tx_jhterannouncer.persistence
+		settings < plugin.tx_jhterannouncer.settings
+		settings.format = xml
+	}
+}
+
+plugin.tx_jhterannouncer.settings {
+	defaultFilter = currentVersion:1
+	format = html
+	list {
+		rss {
+			channel {
+				title = Extension feed
+				link = http://example.com
+				description = Feed of extensions
+				language = en-gb
+				copyright =
+				category =
+				generator = EXT:jh_ter_announcer
+			}
+			config {
+				link.id = {$plugin.tx_jhterannouncer.settings.list.rss.config.link.id}
+				limit = {$plugin.tx_jhterannouncer.settings.list.rss.config.limit}
+				targetType = {$plugin.tx_jhterannouncer.settings.list.rss.config.targetType}
+			}
+		}
+		frontend {
+			paginateList = 1
+			paginate {
+				itemsPerPage = 15
+				insertAbove = 0
+				insertBelow = 1
+				maximumNumberOfLinks = 10
+			}
+		}
+	}
+}
+
+plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE >
+plugin.tx_jhterannouncer._CSS_DEFAULT_STYLE (
+	.tx-jh-ter-announcer .list-extension .single {
+		padding: 10px;
+	}
+	.tx-jh-ter-announcer .list-extension .single:nth-child(odd) {
+		background-color: #f7f7f7;
+	}
+	.tx-jh-ter-announcer .list-extension .single:nth-child(even) {
+		background-color: #fdfdfd;
+	}
+	.tx-jh-ter-announcer .list-extension .single:hover {
+		background-color: #efefef;
+	}
+	
+	.tx-jh-ter-announcer .show-extension {
+		padding: 10px;
+		background-color: #f7f7f7;
+	}
+	.tx-jh-ter-announcer .show-extension .information .version,
+	.tx-jh-ter-announcer .show-extension .information .last-updated {
+		display: inline-block;
+		width: 50%;
+		float: left;
+	}
+	.tx-jh-ter-announcer .show-extension .history {
+		padding: 10px;
+		clear: both;
+	}
+	.tx-jh-ter-announcer .show-extension .history:nth-child(odd) {
+		background-color: #f7f7f7;
+	}
+	.tx-jh-ter-announcer .show-extension .history:nth-child(even) {
+		background-color: #fdfdfd;
+	}
+	.tx-jh-ter-announcer .show-extension > .history.selected,
+	.tx-jh-ter-announcer .show-extension > .history:hover {
+		background-color: #efefef;
+	}
+	.tx-jh-ter-announcer .history .version,
+	.tx-jh-ter-announcer .history .date {
+		display: inline-block;
+		width: 50%;
+		float: left;
+	}
+	.tx-jh-ter-announcer .version > * {
+		text-transform: capitalize;
+	}
+	.tx-jh-ter-announcer .version > .alpha {
+		color: #f14400;
+	}
+	.tx-jh-ter-announcer .version > .beta {
+		color: #f4bd00;
+	}
+	.tx-jh-ter-announcer .version > .stable {
+		color: #3db900;
+	}
+	
+	.tx-jh-ter-announcer ul.f3-widget-paginator {
+		padding: 0;
+	}
+	.tx-jh-ter-announcer .f3-widget-paginator {
+        display: inline-block;
+        margin: 20px 0px;
+        text-align: center;
+        width: 100%;
+    }
+    .tx-jh-ter-announcer .f3-widget-paginator > li {
+        display: inline;
+    }
+    .tx-jh-ter-announcer .f3-widget-paginator > li > a {
+        padding: 12px;
+    }
+)

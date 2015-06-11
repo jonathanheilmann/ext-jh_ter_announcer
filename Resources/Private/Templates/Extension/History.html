@@ -1,0 +1,40 @@
+{namespace h = Heilmann\JhTerAnnouncer\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<f:flashMessages renderMode="div" />
+
+<div id="extension-uid{extension.uid}" class="show-extension">
+	<div class="header">
+		<h2 class="title">{extension.title} ({extension.extensionKey})</h2>
+		<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+	</div>
+	<div class="information">
+		<p class="description"><b><f:translate key="extension.description" />:</b><br/>{extension.description}</p>
+		<p class="category"><b><f:translate key="extension.category" />:</b><br/><h:extension.resolveCategoryFromInt category="{extension.category}"/></p>
+		<p class="dependencies">
+			<b><f:translate key="extension.dependencies" />:</b><br/>
+			<f:for each="{h:extension.resolveDependencies(dependencies:extension.serializedDependencies)}" as="dependencies" key="key" iteration="iterator">
+				<u>{key}:</u><br/>
+				<f:for each="{dependencies.0}" as="dependency" iteration="keyIterator">
+					- {dependency}{f:if(condition: keyIterator.isLast, else: '<br/>')}
+				</f:for>
+				{f:if(condition: iterator.isLast, else: '<br/>')}
+			</f:for>
+		</p>
+		<p class="ter">
+			<f:link.external uri="http://typo3.org/extensions/repository/view/{extension.extensionKey}" title="View extension \"{extension.title}\" in TER" target="new"><f:translate key="extension.viewInTer" /></f:link.external> 
+		</p>
+	</div>
+	<f:for each="{versions}" as="version">
+		<div class="history {f:if(condition:'{0: extension} == {0: version}', then: 'selected')}">
+			<p class="version"><b><f:translate key="extension.version" />:</b><br/>{version.version} <h:extension.resolveStateFromInt state="{extension.state}" addWrap="1"/></p>
+			<p class="date"><b><f:translate key="extension.date" />:</b><br/><f:format.date date="{version.lastUpdated}" format="d.m.Y H:i"/></p>
+			<p class="update-comment"><b><f:translate key="extension.updateComment" />:</b><br/>{version.updateComment}</p>
+		</div>
+	</f:for>
+</div>
+<f:link.action action="show" arguments="{extension: extension}">Back to extension</f:link.action>
+</f:section>

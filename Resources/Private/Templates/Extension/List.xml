@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{namespace h = Heilmann\JhTerAnnouncer\ViewHelpers}
+
+<f:alias map="{pageUid: '{f:if(condition: settings.list.rss.config.link.id, then: settings.list.rss.config.link.id, else: pageId)}'}">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>{settings.list.rss.channel.title}</title>
+		<link>{settings.list.rss.channel.link}</link>
+		<atom:link href="{f:uri.page(absolute:1, addQueryString: 1)}" rel="self" type="application/rss+xml" />
+		<description>{settings.list.rss.channel.description}</description>
+		<language>{settings.list.rss.channel.language}</language>
+		<f:if condition="{settings.list.rss.channel.copyright}">
+			<copyright>{settings.list.rss.channel.copyright}</copyright>
+		</f:if>
+		<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" /></pubDate>
+		<lastBuildDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" /></lastBuildDate>
+		<f:if condition="{settings.list.rss.channel.category}"><category>{settings.list.rss.channel.category}</category>
+		</f:if>
+		<generator>{settings.list.rss.channel.generator}</generator>
+		<f:if condition="{extensions}">
+			<f:for each="{extensions}" as="extension">
+				<item>
+					<f:render section="{settings.list.rss.config.targetType}" arguments="{extension: extension, pageUid: pageUid}" />
+				</item>
+			</f:for>
+		</f:if>
+	</channel>
+</rss>
+</f:alias>
+
+<f:section name="linkToTer">
+	<guid isPermaLink="false">extension-{extension.uid}</guid>
+	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
+	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
+	<link><f:format.htmlentities>http://typo3.org/extensions/repository/view/{extension.extensionKey}</f:format.htmlentities></link>
+	<description>
+		<h:format.trim trimTabs="FALSE">
+			<f:format.cdata><f:format.htmlspecialchars>
+				<h:format.striptags><f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)</h:format.striptags><br/>
+				<p><b><f:translate key="extension.updateComment" />:</b><br/>{extension.updateComment}</p>
+				<hr/>
+				<p><b><f:translate key="extension.description" />:</b><br/>{extension.description}</p>
+				<p><b><f:translate key="extension.category" />:</b><br/><h:extension.resolveCategoryFromInt category="{extension.category}"/></p>
+				<p>
+					<b><f:translate key="extension.dependencies" />:</b><br/>
+					<f:for each="{h:extension.resolveDependencies(dependencies:extension.serializedDependencies)}" as="dependencies" key="key" iteration="iterator">
+						<u>{key}:</u><br/>
+						<f:for each="{dependencies.0}" as="dependency" iteration="keyIterator">
+							- {dependency}{f:if(condition: keyIterator.isLast, else: '<br/>')}
+						</f:for>
+						{f:if(condition: iterator.isLast, else: '<br/>')}
+					</f:for>
+				</p>
+			</f:format.htmlspecialchars></f:format.cdata>
+		</h:format.trim>
+	</description>
+</f:section>
+
+<f:section name="linkToWebsite">
+	<guid isPermaLink="false">extension-{extension.uid}</guid>
+	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
+	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
+	<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})->f:format.htmlentities()}</link>
+	<description>
+		<h:format.trim trimTabs="FALSE">
+			<f:format.cdata><f:format.htmlspecialchars>
+				<f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)<br/>
+				<f:translate key="extension.updateComment" />:<br/>
+				{extension.updateComment}
+			</f:format.htmlspecialchars></f:format.cdata>
+		</h:format.trim>
+	</description>
+</f:section>

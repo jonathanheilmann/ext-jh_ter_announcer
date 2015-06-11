@@ -1,7 +1,6 @@
 <?php
 namespace Heilmann\JhTerAnnouncer\Domain\Repository;
 
-
 /***************************************************************
  *
  *  Copyright notice
@@ -32,7 +31,11 @@ namespace Heilmann\JhTerAnnouncer\Domain\Repository;
  */
 class LogRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	public function findByExtKeyAndExtVersion($extKey, $extVersion){
+	/**
+	 * @param $extKey
+	 * @param $extVersion
+	 */
+	public function findByExtKeyAndExtVersion($extKey, $extVersion) {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 		$query->matching(
@@ -41,7 +44,9 @@ class LogRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				$query->equals('extVersion', $extVersion)
 			)
 		);
-		$res = $query->execute();//->count();
+		$res = $query->execute();
+		//->count();
 		return $res;
 	}
+
 }
