@@ -12,6 +12,13 @@
 		<f:if condition="{settings.list.rss.channel.copyright}">
 			<copyright>{settings.list.rss.channel.copyright}</copyright>
 		</f:if>
+		<f:if condition="{settings.list.rss.channel.image}">
+			<image>
+				<url><f:uri.image src="{settings.list.rss.channel.image}" maxHeight="400" maxWidth="144" /></url>
+				<title>{settings.list.rss.channel.title}</title>
+				<link>{settings.list.rss.channel.link}</link>
+			</image>
+		</f:if>
 		<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" /></pubDate>
 		<lastBuildDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" /></lastBuildDate>
 		<f:if condition="{settings.list.rss.channel.category}"><category>{settings.list.rss.channel.category}</category>
@@ -31,6 +38,7 @@
 <f:section name="linkToTer">
 	<guid isPermaLink="false">extension-{extension.uid}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
+	<author>{extension.authorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></author>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
 	<link><f:format.htmlentities>http://typo3.org/extensions/repository/view/{extension.extensionKey}</f:format.htmlentities></link>
 	<description>
@@ -40,7 +48,7 @@
 				<p><b><f:translate key="extension.updateComment" />:</b><br/>{extension.updateComment}</p>
 				<hr/>
 				<p><b><f:translate key="extension.description" />:</b><br/>{extension.description}</p>
-				<p><b><f:translate key="extension.category" />:</b><br/><h:extension.resolveCategoryFromInt category="{extension.category}"/></p>
+				<p><b><f:translate key="extension.category" />:</b><br/><f:translate key="extension.category.{h:extension.resolveCategoryFromInt(category: extension.category)}" default="Miscellaneous" /></p>
 				<p>
 					<b><f:translate key="extension.dependencies" />:</b><br/>
 					<f:for each="{h:extension.resolveDependencies(dependencies:extension.serializedDependencies)}" as="dependencies" key="key" iteration="iterator">
@@ -59,6 +67,7 @@
 <f:section name="linkToWebsite">
 	<guid isPermaLink="false">extension-{extension.uid}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
+	<author>{extension.authorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></author>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
 	<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})->f:format.htmlentities()}</link>
 	<description>

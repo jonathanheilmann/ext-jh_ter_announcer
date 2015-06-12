@@ -46,14 +46,56 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	protected $propertyNameWhitelist = 'extensionKey,state,category,authorName,authorEmail,ownerusername,authorCompany,currentVersion';
 
 	/**
+	 * @var string
+	 */
+	protected $orderingsPropertyNameWhitelist = 'extensionKey,state,category,lastUpdated';
+	
+	
+	/*
+	 * action initialize
+	 * 
+	 * @return void
+	 */
+	public function initializeAction() {
+		// merge settings with flexform
+		\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->settings, $this->mergeSettings($this->settings['flexform']));
+		unset($this->settings['flexform']);
+	}
+	
+	/*
+	 * merge settings
+	 * used to merge flexform setting with typoscript setting
+	 *
+	 * @param array $settings
+	 * @return array
+	 */
+	private function mergeSettings($settings) {
+		foreach($settings as $key => $value) {
+			if (isset($value['select']) && $value['select'] == 'local') {
+				$settings[$key] = $value['value'];
+			} else if (!isset($value['select'])) {
+				if (is_array($value)) {
+					$settings[$key] = $this->mergeSettings($value);
+				} else {
+					$settings[$key] = $value;
+				}
+			} else {
+				unset($settings[$key]);
+			}
+		}
+		return $settings;
+	}
+
+	/**
 	 * action list
 	 *
-	 * @param string $filtersString
 	 * @param string $format
 	 * @return void
 	 */
-	public function listAction($filter = '', $format = '') {
-		$filtersString = $filter;
+	public function listAction($format = '') {
+		$extensions = NULL;
+		
+		// get format
 		if ($format != '') {
 			$this->request->setFormat($format);
 		} else {
@@ -61,25 +103,56 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 				$this->request->setFormat($this->settings['format']);
 			}
 		}
-		$extensions = NULL;
-		if ($filtersString == '') {
-			$filtersString = $this->settings['defaultFilter'];
-		}
+		
+		// get filter
+		$filtersString = $this->settings['filter'];
+		
+		// get limit
 		$limit = NULL;
 		if ($this->request->getFormat() == 'xml') {
 			$limit = $this->settings['list']['rss']['config']['limit'];
 		}
+		
+		// get orderings if format is not xml
+		$orderings = $this->settings['orderings'];
+		if ($orderings != '' && $this->request->getFormat() != 'xml') {
+			$formatedOrderings = array();
+			$orderingsArray = GeneralUtility::trimExplode(';', $orderings, TRUE);
+			if (!empty($orderingsArray) && is_array($orderingsArray)) {
+				foreach ($orderingsArray as $orderingsString) {
+					$orderingsProperties = GeneralUtility::trimExplode(':', $orderingsString);
+					if (GeneralUtility::inList($this->orderingsPropertyNameWhitelist, $orderingsProperties[0])) {
+						if ($orderingsProperties[1] == 'ASC' || $orderingsProperties[1] == 'asc') {
+							$formatedOrderings[$orderingsProperties[0]] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+						} else if ($orderingsProperties[1] == 'DESC' || $orderingsProperties[1] == 'desc') {
+							$formatedOrderings[$orderingsProperties[0]] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING;							
+						} else {
+							$this->addFlashMessage('Unallowed direction \'' . $orderingsProperties[1] . '\' for orderings', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+						}
+					} else {
+						$this->addFlashMessage('Unallowed propertyName \'' . $orderingsProperties[0] . '\' for orderings', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+					}
+				}
+			}
+			if (count($formatedOrderings) > 0) {
+				$this->extensionRepository->setDefaultOrderings($formatedOrderings);
+			}
+		}
+		
+		// get extensions
 		if ($filtersString != '') {
 			$demand = array();
 			$filtersArray = GeneralUtility::trimExplode(';', $filtersString, TRUE);
 			if (!empty($filtersArray) && is_array($filtersArray)) {
 				foreach ($filtersArray as $filterString) {
 					$filterProperties = GeneralUtility::trimExplode(':', $filterString);
-					if (GeneralUtility::inList($this->propertyNameWhitelist, $filterProperties[0]) === TRUE) {
+					if (GeneralUtility::inList($this->propertyNameWhitelist, $filterProperties[0])) {
 						$demand[] = array(
 							'propertyName' => $filterProperties[0],
 							'operand' => $filterProperties[1]
 						);
+					} else {
+						$this->addFlashMessage('Unallowed propertyName \'' . $filterProperties[0] . '\' for filter', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
 					}
 				}
 				$extensions = $this->extensionRepository->findByDemand($demand, $limit);

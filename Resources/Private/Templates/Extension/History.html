@@ -9,11 +9,11 @@
 <div id="extension-uid{extension.uid}" class="show-extension">
 	<div class="header">
 		<h2 class="title">{extension.title} ({extension.extensionKey})</h2>
-		<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+		<span class="author">{extension.authorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
 	</div>
 	<div class="information">
 		<p class="description"><b><f:translate key="extension.description" />:</b><br/>{extension.description}</p>
-		<p class="category"><b><f:translate key="extension.category" />:</b><br/><h:extension.resolveCategoryFromInt category="{extension.category}"/></p>
+		<p class="category"><b><f:translate key="extension.category" />:</b><br/><f:translate key="extension.category.{h:extension.resolveCategoryFromInt(category: extension.category)}" default="Miscellaneous" /></p>
 		<p class="dependencies">
 			<b><f:translate key="extension.dependencies" />:</b><br/>
 			<f:for each="{h:extension.resolveDependencies(dependencies:extension.serializedDependencies)}" as="dependencies" key="key" iteration="iterator">

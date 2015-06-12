@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-06-10T18:54:14Z">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-06-12T18:42:14Z">
 		<header>
 			<generator>LFEditor</generator>
 		</header>
@@ -52,6 +52,34 @@
 		<trans-unit id="extension.viewInTerTitleTag" approved="yes">
 			<source>View extension &quot;%s&quot; in TER</source>
 			<target>Öffne Extension &quot;%s&quot; in TER</target>
+		</trans-unit>
+		<trans-unit id="flexform.extension.local" approved="yes">
+			<source>Define local</source>
+			<target>Lokal definieren</target>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.filter.select" approved="yes">
+			<source>Filter</source>
+			<target>Filter</target>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.filter.value" approved="yes">
+			<source>Filter value</source>
+			<target>Filter-Wert</target>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.orderings.select" approved="yes">
+			<source>Orderings</source>
+			<target>Sortierung</target>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.orderings.value" approved="yes">
+			<source>Orderings value</source>
+			<target>Sortierungswert</target>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.title" approved="yes">
+			<source>Configuration</source>
+			<target>Konfiguration</target>
+		</trans-unit>
+		<trans-unit id="flexform.extension.typoscript" approved="yes">
+			<source>Defined by TypoScript</source>
+			<target>Aus TypoScript</target>
 		</trans-unit>
 		</body>
 	</file>
