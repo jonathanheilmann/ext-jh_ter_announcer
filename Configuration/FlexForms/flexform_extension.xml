@@ -7,23 +7,23 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>Configuration</sheetTitle>
+					<sheetTitle>LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.sDEF.title</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.flexform.filter.select>
 						<TCEforms>
-							<label>Filter settings</label>
+							<label>LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.sDEF.filter.select</label>
 							<onChange>reload</onChange>
 							<config>
 								<type>select</type>
 								<items type="array">
 									<numIndex index="0" type="array">
-										<numIndex index="0">TypoScript</numIndex>
+										<numIndex index="0">LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.typoscript</numIndex>
 										<numIndex index="1">-1</numIndex>
 									</numIndex>
 									<numIndex index="1" type="array">
-										<numIndex index="0">Local</numIndex>
+										<numIndex index="0">LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.local</numIndex>
 										<numIndex index="1">local</numIndex>
 									</numIndex>
 								</items>
@@ -33,7 +33,7 @@
 					</settings.flexform.filter.select>
 					<settings.flexform.filter.value>
 						<TCEforms>
-							<label>Filter</label>
+							<label>LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.sDEF.filter.value</label>
 							<displayCond>FIELD:settings.flexform.filter.select:=:local</displayCond>
 							<config>
 								<type>input</type>
@@ -45,17 +45,17 @@
 					</settings.flexform.filter.value>
 					<settings.flexform.orderings.select>
 						<TCEforms>
-							<label>Orderings settings</label>
+							<label>LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.sDEF.orderings.select</label>
 							<onChange>reload</onChange>
 							<config>
 								<type>select</type>
 								<items type="array">
 									<numIndex index="0" type="array">
-										<numIndex index="0">TypoScript</numIndex>
+										<numIndex index="0">LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.typoscript</numIndex>
 										<numIndex index="1">-1</numIndex>
 									</numIndex>
 									<numIndex index="1" type="array">
-										<numIndex index="0">Local</numIndex>
+										<numIndex index="0">LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.local</numIndex>
 										<numIndex index="1">local</numIndex>
 									</numIndex>
 								</items>
@@ -65,7 +65,7 @@
 					</settings.flexform.orderings.select>
 					<settings.flexform.orderings.value>
 						<TCEforms>
-							<label>Filter</label>
+							<label>LLL:EXT:jh_ter_announcer/Resources/Private/Language/locallang.xlf:flexform.extension.sDEF.orderings.value</label>
 							<displayCond>FIELD:settings.flexform.orderings.select:=:local</displayCond>
 							<config>
 								<type>input</type>

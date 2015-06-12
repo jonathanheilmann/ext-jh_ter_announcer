@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-06-12T06:31:58Z">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-06-12T18:42:14Z">
 		<header>
 			<generator>LFEditor</generator>
 		</header>
@@ -70,6 +70,27 @@
 		</trans-unit>
 		<trans-unit id="extension.viewInTerTitleTag">
 			<source>View extension &quot;%s&quot; in TER</source>
+		</trans-unit>
+		<trans-unit id="flexform.extension.local">
+			<source>Define local</source>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.filter.select">
+			<source>Filter</source>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.filter.value">
+			<source>Filter value</source>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.orderings.select">
+			<source>Orderings</source>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.orderings.value">
+			<source>Orderings value</source>
+		</trans-unit>
+		<trans-unit id="flexform.extension.sDEF.title">
+			<source>Configuration</source>
+		</trans-unit>
+		<trans-unit id="flexform.extension.typoscript">
+			<source>Defined by TypoScript</source>
 		</trans-unit>
 		<trans-unit id="label.task_terAnnouncer.blacklist">
 			<source>Blacklist</source>
