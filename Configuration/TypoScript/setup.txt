@@ -87,6 +87,7 @@ plugin.tx_jhterannouncer.settings {
 				description = Feed of extensions
 				language = en-gb
 				copyright =
+				image = EXT:jh_ter_announcer/Resources/Public/Icons/module-extensionmanager.png
 				category =
 				generator = EXT:jh_ter_announcer
 			}
