@@ -59,6 +59,8 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	}
 	
 	/*
+	 * merge settings
+	 * used to merge flexform setting with typoscript setting
 	 *
 	 * @param array $settings
 	 * @return array
@@ -83,12 +85,13 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	/**
 	 * action list
 	 *
-	 * @param string $filtersString
 	 * @param string $format
 	 * @return void
 	 */
-	public function listAction($filter = '', $format = '') {
-		$filtersString = $filter;
+	public function listAction($format = '') {
+		$extensions = NULL;
+		
+		// get format
 		if ($format != '') {
 			$this->request->setFormat($format);
 		} else {
@@ -96,14 +99,17 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 				$this->request->setFormat($this->settings['format']);
 			}
 		}
-		$extensions = NULL;
-		if ($filtersString == '') {
-			$filtersString = $this->settings['filter'];
-		}
+		
+		// get filter
+		$filtersString = $this->settings['filter'];
+		
+		// get limit
 		$limit = NULL;
 		if ($this->request->getFormat() == 'xml') {
 			$limit = $this->settings['list']['rss']['config']['limit'];
 		}
+		
+		// get extensions
 		if ($filtersString != '') {
 			$demand = array();
 			$filtersArray = GeneralUtility::trimExplode(';', $filtersString, TRUE);
