@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-06-10T18:54:14Z">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-06-12T06:31:58Z">
 		<header>
 			<generator>LFEditor</generator>
 		</header>
@@ -10,6 +10,36 @@
 		</trans-unit>
 		<trans-unit id="extension.category">
 			<source>Category</source>
+		</trans-unit>
+		<trans-unit id="extension.category.be">
+			<source>Backend</source>
+		</trans-unit>
+		<trans-unit id="extension.category.distribution">
+			<source>Distribution</source>
+		</trans-unit>
+		<trans-unit id="extension.category.doc">
+			<source>Documentation</source>
+		</trans-unit>
+		<trans-unit id="extension.category.example">
+			<source>Examples</source>
+		</trans-unit>
+		<trans-unit id="extension.category.fe">
+			<source>Frontend</source>
+		</trans-unit>
+		<trans-unit id="extension.category.misc">
+			<source>Miscellaneous</source>
+		</trans-unit>
+		<trans-unit id="extension.category.module">
+			<source>Backend modules</source>
+		</trans-unit>
+		<trans-unit id="extension.category.plugin">
+			<source>Frontend plugins</source>
+		</trans-unit>
+		<trans-unit id="extension.category.services">
+			<source>Services</source>
+		</trans-unit>
+		<trans-unit id="extension.category.templates">
+			<source>Templates</source>
 		</trans-unit>
 		<trans-unit id="extension.date">
 			<source>Date</source>

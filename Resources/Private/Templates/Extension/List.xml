@@ -40,7 +40,7 @@
 				<p><b><f:translate key="extension.updateComment" />:</b><br/>{extension.updateComment}</p>
 				<hr/>
 				<p><b><f:translate key="extension.description" />:</b><br/>{extension.description}</p>
-				<p><b><f:translate key="extension.category" />:</b><br/><h:extension.resolveCategoryFromInt category="{extension.category}"/></p>
+				<p><b><f:translate key="extension.category" />:</b><br/><f:tranlsate key="extension.category.{h:extension.resolveCategoryFromInt(category: extension.category)}" default="Miscellaneous" /></p>
 				<p>
 					<b><f:translate key="extension.dependencies" />:</b><br/>
 					<f:for each="{h:extension.resolveDependencies(dependencies:extension.serializedDependencies)}" as="dependencies" key="key" iteration="iterator">
