@@ -44,6 +44,11 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 * @var string
 	 */
 	protected $propertyNameWhitelist = 'extensionKey,state,category,authorName,authorEmail,ownerusername,authorCompany,currentVersion';
+
+	/**
+	 * @var string
+	 */
+	protected $orderingsPropertyNameWhitelist = 'extensionKey,state,category,lastUpdated';
 	
 	
 	/*
@@ -55,7 +60,6 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 		// merge settings with flexform
 		\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->settings, $this->mergeSettings($this->settings['flexform']));
 		unset($this->settings['flexform']);
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);
 	}
 	
 	/*
@@ -109,6 +113,32 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 			$limit = $this->settings['list']['rss']['config']['limit'];
 		}
 		
+		// get orderings if format is not xml
+		$orderings = $this->settings['orderings'];
+		if ($orderings != '' && $this->request->getFormat() != 'xml') {
+			$formatedOrderings = array();
+			$orderingsArray = GeneralUtility::trimExplode(';', $orderings, TRUE);
+			if (!empty($orderingsArray) && is_array($orderingsArray)) {
+				foreach ($orderingsArray as $orderingsString) {
+					$orderingsProperties = GeneralUtility::trimExplode(':', $orderingsString);
+					if (GeneralUtility::inList($this->orderingsPropertyNameWhitelist, $orderingsProperties[0])) {
+						if ($orderingsProperties[1] == 'ASC' || $orderingsProperties[1] == 'asc') {
+							$formatedOrderings[$orderingsProperties[0]] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+						} else if ($orderingsProperties[1] == 'DESC' || $orderingsProperties[1] == 'desc') {
+							$formatedOrderings[$orderingsProperties[0]] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING;							
+						} else {
+							$this->addFlashMessage('Unallowed direction \'' . $orderingsProperties[1] . '\' for orderings', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+						}
+					} else {
+						$this->addFlashMessage('Unallowed propertyName \'' . $orderingsProperties[0] . '\' for orderings', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+					}
+				}
+			}
+			if (count($formatedOrderings) > 0) {
+				$this->extensionRepository->setDefaultOrderings($formatedOrderings);
+			}
+		}
+		
 		// get extensions
 		if ($filtersString != '') {
 			$demand = array();
@@ -116,7 +146,7 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 			if (!empty($filtersArray) && is_array($filtersArray)) {
 				foreach ($filtersArray as $filterString) {
 					$filterProperties = GeneralUtility::trimExplode(':', $filterString);
-					if (GeneralUtility::inList($this->propertyNameWhitelist, $filterProperties[0]) === TRUE) {
+					if (GeneralUtility::inList($this->propertyNameWhitelist, $filterProperties[0])) {
 						$demand[] = array(
 							'propertyName' => $filterProperties[0],
 							'operand' => $filterProperties[1]

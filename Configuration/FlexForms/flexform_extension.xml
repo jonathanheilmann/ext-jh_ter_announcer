@@ -43,6 +43,38 @@
 							</config>
 						</TCEforms>
 					</settings.flexform.filter.value>
+					<settings.flexform.orderings.select>
+						<TCEforms>
+							<label>Orderings settings</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">TypoScript</numIndex>
+										<numIndex index="1">-1</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">Local</numIndex>
+										<numIndex index="1">local</numIndex>
+									</numIndex>
+								</items>
+								<default>-1</default>
+							</config>
+						</TCEforms>
+					</settings.flexform.orderings.select>
+					<settings.flexform.orderings.value>
+						<TCEforms>
+							<label>Filter</label>
+							<displayCond>FIELD:settings.flexform.orderings.select:=:local</displayCond>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<max>256</max>
+								<eval>trim</eval>
+							</config>
+						</TCEforms>
+					</settings.flexform.orderings.value>
 				</el>
 			</ROOT>
 		</sDEF>

@@ -78,6 +78,7 @@ terFeed {
 
 plugin.tx_jhterannouncer.settings {
 	filter = currentVersion:1
+	orderings =
 	format = html
 	list {
 		rss {
