@@ -44,6 +44,41 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 * @var string
 	 */
 	protected $propertyNameWhitelist = 'extensionKey,state,category,authorName,authorEmail,ownerusername,authorCompany,currentVersion';
+	
+	
+	/*
+	 * action initialize
+	 * 
+	 * @return void
+	 */
+	public function initializeAction() {
+		// merge settings with flexform
+		\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->settings, $this->mergeSettings($this->settings['flexform']));
+		unset($this->settings['flexform']);
+		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);
+	}
+	
+	/*
+	 *
+	 * @param array $settings
+	 * @return array
+	 */
+	private function mergeSettings($settings) {
+		foreach($settings as $key => $value) {
+			if (isset($value['select']) && $value['select'] == 'local') {
+				$settings[$key] = $value['value'];
+			} else if (!isset($value['select'])) {
+				if (is_array($value)) {
+					$settings[$key] = $this->mergeSettings($value);
+				} else {
+					$settings[$key] = $value;
+				}
+			} else {
+				unset($settings[$key]);
+			}
+		}
+		return $settings;
+	}
 
 	/**
 	 * action list
@@ -63,7 +98,7 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 		}
 		$extensions = NULL;
 		if ($filtersString == '') {
-			$filtersString = $this->settings['defaultFilter'];
+			$filtersString = $this->settings['filter'];
 		}
 		$limit = NULL;
 		if ($this->request->getFormat() == 'xml') {
@@ -80,6 +115,8 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 							'propertyName' => $filterProperties[0],
 							'operand' => $filterProperties[1]
 						);
+					} else {
+						$this->addFlashMessage('Unallowed propertyName \'' . $filterProperties[0] . '\' for filter', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
 					}
 				}
 				$extensions = $this->extensionRepository->findByDemand($demand, $limit);

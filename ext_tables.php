@@ -66,3 +66,9 @@ $GLOBALS['TCA']['tx_extensionmanager_domain_model_extension']['columns'][$TCA['t
 
 // Hide log table in web_list
 $GLOBALS['TCA']['tx_extensionmanager_domain_model_extension']['ctrl']['hideTable'] = true;
+
+// Add FlexForms
+$extensionName = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY);
+$pluginSignature = strtolower($extensionName) . '_extension';
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_extension.xml');

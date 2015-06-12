@@ -77,7 +77,7 @@ terFeed {
 }
 
 plugin.tx_jhterannouncer.settings {
-	defaultFilter = currentVersion:1
+	filter = currentVersion:1
 	format = html
 	list {
 		rss {
