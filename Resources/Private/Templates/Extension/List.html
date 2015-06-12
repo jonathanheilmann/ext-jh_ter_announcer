@@ -34,7 +34,7 @@
 	<div class="single">
 		<div class="header">
 			<h3 class="title"><f:link.action action="show" arguments="{extension: extension}">{extension.title}</f:link.action> ({extension.extensionKey})</h3>
-			<span class="author">{extension.AuthorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
+			<span class="author">{extension.authorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></span><br/><br/>
 		</div>
 		<div class="information">
 			<f:if condition="{extension.description}"><p class="description"><b>Description:</b><br/>{extension.description->f:format.htmlentities()}</p></f:if>
