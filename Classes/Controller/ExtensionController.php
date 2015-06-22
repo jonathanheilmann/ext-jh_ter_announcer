@@ -166,7 +166,21 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 			$extensions = $this->extensionRepository->findByCurrentVersion(1, $limit);
 		}
 		$this->view->assign('extensions', $extensions);
+		
+		// get last updated extension
+		$lastUpdatedExtension = $extensions->toArray();
+		// Sort the multidimensional array
+		usort($lastUpdatedExtension, array(get_class($this), "sortExtensionsByLastUpdated"));
+		$this->view->assign('lastUpdatedExtension', reset($lastUpdatedExtension));
+		
 		$this->view->assign('pageId', $GLOBALS['TSFE']->id);
+	}
+	
+	/**
+	 * Define custom sort function to get last updated extension at first position of array
+	 */
+	private static function sortExtensionsByLastUpdated($a, $b) {
+		return $a->getLastUpdated() < $b->getLastUpdated();
 	}
 
 	/**

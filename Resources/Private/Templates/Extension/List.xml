@@ -19,7 +19,7 @@
 				<link>{settings.list.rss.channel.link}</link>
 			</image>
 		</f:if>
-		<lastBuildDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="1" strftime="1" /></lastBuildDate>
+		<lastBuildDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1" >{lastUpdatedExtension.lastUpdated}</h:format.date></lastBuildDate>
 		<f:if condition="{settings.list.rss.channel.category}"><category>{settings.list.rss.channel.category}</category>
 		</f:if>
 		<generator>{settings.list.rss.channel.generator}</generator>
