@@ -58,8 +58,10 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 */
 	public function initializeAction() {
 		// merge settings with flexform
-		\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->settings, $this->mergeSettings($this->settings['flexform']));
-		unset($this->settings['flexform']);
+		if (isset($this->settings['flexform'])) {
+			\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->settings, $this->mergeSettings($this->settings['flexform']));
+			unset($this->settings['flexform']);
+		}
 	}
 	
 	/*
