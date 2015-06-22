@@ -43,7 +43,7 @@
 	<link><f:format.htmlentities>http://typo3.org/extensions/repository/view/{extension.extensionKey}</f:format.htmlentities></link>
 	<description>
 		<h:format.trim trimTabs="FALSE">
-			<f:format.cdata><f:format.htmlspecialchars>
+			<f:format.htmlspecialchars>
 				<h:format.striptags><f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)</h:format.striptags><br/>
 				<p><b><f:translate key="extension.updateComment" />:</b><br/>{extension.updateComment}</p>
 				<hr/>
@@ -59,7 +59,7 @@
 						{f:if(condition: iterator.isLast, else: '<br/>')}
 					</f:for>
 				</p>
-			</f:format.htmlspecialchars></f:format.cdata>
+			</f:format.htmlspecialchars>
 		</h:format.trim>
 	</description>
 </f:section>
@@ -72,11 +72,11 @@
 	<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})->f:format.htmlentities()}</link>
 	<description>
 		<h:format.trim trimTabs="FALSE">
-			<f:format.cdata><f:format.htmlspecialchars>
+			<f:format.htmlspecialchars>
 				<f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)<br/>
 				<f:translate key="extension.updateComment" />:<br/>
 				{extension.updateComment}
-			</f:format.htmlspecialchars></f:format.cdata>
+			</f:format.htmlspecialchars>
 		</h:format.trim>
 	</description>
 </f:section>
