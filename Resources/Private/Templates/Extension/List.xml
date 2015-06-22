@@ -39,14 +39,14 @@
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
 	<author>{extension.authorEmail} ({extension.authorName}<f:if condition="{extension.authorCompany}"> [{extension.authorCompany}]</f:if>)</author>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
-	<link><f:format.htmlentities>http://typo3.org/extensions/repository/view/{extension.extensionKey}</f:format.htmlentities></link>
+	<link><f:format.htmlspecialchars>http://typo3.org/extensions/repository/view/{extension.extensionKey}</f:format.htmlspecialchars></link>
 	<description>
 		<h:format.trim trimTabs="FALSE">
-			<f:format.htmlspecialchars>
+			<f:format.cdata>
 				<h:format.striptags><f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)</h:format.striptags><br/>
-				<p><b><f:translate key="extension.updateComment" />:</b><br/>{extension.updateComment}</p>
+				<p><b><f:translate key="extension.updateComment" />:</b><br/>{extension.updateComment->f:format.htmlspecialchars()}</p>
 				<hr/>
-				<p><b><f:translate key="extension.description" />:</b><br/>{extension.description}</p>
+				<p><b><f:translate key="extension.description" />:</b><br/>{extension.description->f:format.htmlspecialchars()}</p>
 				<p><b><f:translate key="extension.category" />:</b><br/><f:translate key="extension.category.{h:extension.resolveCategoryFromInt(category: extension.category)}" default="Miscellaneous" /></p>
 				<p>
 					<b><f:translate key="extension.dependencies" />:</b><br/>
@@ -58,7 +58,7 @@
 						{f:if(condition: iterator.isLast, else: '<br/>')}
 					</f:for>
 				</p>
-			</f:format.htmlspecialchars>
+			</f:format.cdata>
 		</h:format.trim>
 	</description>
 </f:section>
@@ -71,11 +71,10 @@
 	<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})->f:format.htmlentities()}</link>
 	<description>
 		<h:format.trim trimTabs="FALSE">
-			<f:format.htmlspecialchars>
+			<f:format.cdata>
 				<f:translate key="extension.newVersion" /> {extension.version} (<h:extension.resolveStateFromInt state="{extension.state}" />)<br/>
-				<f:translate key="extension.updateComment" />:<br/>
-				{extension.updateComment}
-			</f:format.htmlspecialchars>
+				<f:translate key="extension.updateComment" />:<br/>{extension.updateComment->f:format.htmlspecialchars()}
+			</f:format.cdata>
 		</h:format.trim>
 	</description>
 </f:section>
