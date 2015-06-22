@@ -38,7 +38,7 @@
 <f:section name="linkToTer">
 	<guid isPermaLink="false">extension-{extension.uid}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
-	<author>{extension.authorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></author>
+	<author>{extension.authorEmail} ({extension.authorName}<f:if condition="{extension.authorCompany}"> [{extension.authorCompany}]</f:if>)</author>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
 	<link><f:format.htmlentities>http://typo3.org/extensions/repository/view/{extension.extensionKey}</f:format.htmlentities></link>
 	<description>
@@ -67,7 +67,7 @@
 <f:section name="linkToWebsite">
 	<guid isPermaLink="false">extension-{extension.uid}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
-	<author>{extension.authorName}<f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></author>
+	<author>{extension.authorEmail} ({extension.authorName}<f:if condition="{extension.authorCompany}"> [{extension.authorCompany}]</f:if>)</author>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
 	<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})->f:format.htmlentities()}</link>
 	<description>
