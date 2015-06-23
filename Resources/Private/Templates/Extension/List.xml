@@ -35,7 +35,7 @@
 </f:alias>
 
 <f:section name="linkToTer">
-	<guid isPermaLink="false">extension-{extension.uid}</guid>
+	<guid isPermaLink="false">extension-{extension.extensionKey}-{extension.integerVersion}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
 	<author>{extension.authorEmail} ({extension.authorName}<f:if condition="{extension.authorCompany}"> [{extension.authorCompany}]</f:if>)</author>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
@@ -64,7 +64,7 @@
 </f:section>
 
 <f:section name="linkToWebsite">
-	<guid isPermaLink="false">extension-{extension.uid}</guid>
+	<guid isPermaLink="false">extension-{extension.extensionKey}-{extension.integerVersion}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
 	<author>{extension.authorEmail} ({extension.authorName}<f:if condition="{extension.authorCompany}"> [{extension.authorCompany}]</f:if>)</author>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
