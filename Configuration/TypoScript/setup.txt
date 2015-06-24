@@ -61,6 +61,7 @@ terFeed {
 		no_cache = 1
 		language = en
 		locale_all = en_US.UTF8
+		debug = 0
 	}
 	10 = USER
 	10 {
