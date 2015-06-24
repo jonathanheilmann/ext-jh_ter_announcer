@@ -1,7 +1,7 @@
 {namespace h = Heilmann\JhTerAnnouncer\ViewHelpers}
 
 <f:alias map="{pageUid: '{f:if(condition: settings.list.rss.config.link.id, then: settings.list.rss.config.link.id, else: pageId)}'}">
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
 		<title>{settings.list.rss.channel.title}</title>
 		<link>{settings.list.rss.channel.link}</link>
@@ -36,7 +36,7 @@
 <f:section name="linkToTer">
 	<guid isPermaLink="false">extension-{extension.extensionKey}-{extension.integerVersion}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
-	<author>{extension.authorEmail} ({extension.authorName}<f:if condition="{extension.authorCompany}"> [{extension.authorCompany}]</f:if>)</author>
+	<dc:creator><f:format.htmlspecialchars>{extension.authorName} <f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></f:format.htmlspecialchars></dc:creator>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
 	<link><f:format.htmlspecialchars>http://typo3.org/extensions/repository/view/{extension.extensionKey}</f:format.htmlspecialchars></link>
 	<description>
@@ -65,7 +65,7 @@
 <f:section name="linkToWebsite">
 	<guid isPermaLink="false">extension-{extension.extensionKey}-{extension.integerVersion}</guid>
 	<pubDate><h:format.date format="%a, %d %b %Y %T %z" currentDate="0" strftime="1">{extension.lastUpdated}</h:format.date></pubDate>
-	<author>{extension.authorEmail} ({extension.authorName}<f:if condition="{extension.authorCompany}"> [{extension.authorCompany}]</f:if>)</author>
+	<dc:creator><f:format.htmlspecialchars>{extension.authorName} <f:if condition="{extension.authorCompany}"> ({extension.authorCompany})</f:if></f:format.htmlspecialchars></dc:creator>
 	<title><f:format.htmlspecialchars>EXT:{extension.extensionKey} "{extension.title}"</f:format.htmlspecialchars></title>
 	<link>{f:uri.action(action:'show', pageUid: pageUid, arguments: {extension: extension})->f:format.htmlentities()}</link>
 	<description>
