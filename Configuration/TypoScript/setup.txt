@@ -57,7 +57,7 @@ terFeed {
 		disableAllHeaderCode = 1
 		xhtml_cleaning = 0
 		admPanel = 0
-		additionalHeaders = Content-type: application/rss+xml
+		additionalHeaders = Content-type: application/xml
 		no_cache = 1
 		language = en
 		locale_all = en_US.UTF8
