@@ -87,7 +87,7 @@ plugin.tx_jhterannouncer.settings {
 				title = Extension feed
 				link = http://example.com
 				description = Feed of extensions
-				language = en-gb
+				language = en-us
 				copyright =
 				image = EXT:jh_ter_announcer/Resources/Public/Icons/module-extensionmanager.png
 				category =
